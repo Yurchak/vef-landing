@@ -1,0 +1,93 @@
+@import "tailwindcss";
+
+@theme {
+  --font-heading: "Clash Grotesk", sans-serif;
+  --font-sans: "JetBrains Mono", monospace;
+
+  --color-brand-bg: #dee1e7;
+  --color-brand-bg-alt: #caccd3;
+  --color-brand-text: #212529;
+  --color-brand-cta: #E65100;
+  --color-brand-cta-hover: #BF360C;
+  --color-brand-accent: #f76b34;
+  --color-brand-border: #868e98;
+  --stroke-width: 0.5px;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-brand-bg);
+    color: var(--color-brand-text);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+  }
+
+  h2 {
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    line-height: 0.9;
+  }
+
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-heading);
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+}
+
+/* Custom Utilities */
+@layer utilities {
+  .border-grid {
+    border-color: var(--color-brand-border);
+  }
+
+  /* Enforce --stroke-width (0.556px) on all directional combinations.
+     Compound selectors (2 classes) beat Tailwind's single-class utilities. */
+  .border-grid.border   { border-width: var(--stroke-width); }
+  .border-grid.border-t { border-top-width: var(--stroke-width); }
+  .border-grid.border-b { border-bottom-width: var(--stroke-width); }
+  .border-grid.border-l { border-left-width: var(--stroke-width); }
+  .border-grid.border-r { border-right-width: var(--stroke-width); }
+
+  /* Removal modifiers need 3-part specificity to beat the 2-part rules above */
+  .border-grid.last\:border-b-0:last-child { border-bottom-width: 0; }
+
+  /* Global Master Grid */
+  .main-grid {
+    display: grid;
+    grid-template-columns: minmax(1.5rem, 1fr) minmax(0, 80rem) minmax(1.5rem, 1fr);
+  }
+
+  /* Subgrid propagation */
+  .subgrid {
+    display: grid;
+    grid-column: 1 / -1;
+    grid-template-columns: subgrid;
+  }
+
+  /* Content cell (center column) */
+  .grid-content {
+    grid-column: 2;
+  }
+}
+
+/* Responsive border-width overrides (inside media queries so they win over the
+   base compound rules above, despite equal specificity, due to source order) */
+@media (min-width: 1024px) {
+  .border-grid.lg\:border-r   { border-right-width: var(--stroke-width); }
+  .border-grid.lg\:border-b-0 { border-bottom-width: 0; }
+  .border-grid.lg\:border-t-0 { border-top-width: 0; }
+}

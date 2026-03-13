@@ -1,0 +1,88 @@
+import React from 'react';
+import { motion } from 'framer-motion';
+import { GridMarker } from '../components/GridMarker';
+import { SpeakerHifi, ForkKnife, Martini, Palette, Shield, Camera, Lightbulb, Truck } from '@phosphor-icons/react';
+import MapViewer3D from '../components/MapViewer3D';
+
+const SERVICES = [
+    { name: "Audio Tehnika", Icon: SpeakerHifi, desc: "Skaņa, gaisma, ekrāni, projektori un tehniskais personāls." },
+    { name: "Apgaismojums", Icon: Lightbulb, desc: "Radošs gaismas dizains un atmosfēras veidošana." },
+    { name: "Ēdināšana", Icon: ForkKnife, desc: "Augstākās kvalitātes uzkodas, furšeti un pilna servisa ēdināšana." },
+    { name: "Bārs", Icon: Martini, desc: "VEF Kvartāla nodrošināts bārs, personāls un plašs dzērienu klāsts." },
+    { name: "Inventārs un Dekorēšana", Icon: Palette, desc: "Galdi, krēsli un telpu noformējums no labākajiem dekoratoriem." },
+    { name: "Apsardze", Icon: Shield, desc: "Profesionāls drošības personāls un apsardzes risinājumi." },
+    { name: "Foto & Video", Icon: Camera, desc: "Profesionāla pasākuma dokumentēšana un tiešraides nodrošinājums." },
+    { name: "Mediju Atbalsts", Icon: Truck, desc: "Iekraušana, izkraušana un inventāra pārvaldība." }
+];
+
+function ServiceItem({ service, index }) {
+    return (
+        <motion.div
+            initial={{ opacity: 0, x: 10 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-5%" }}
+            transition={{ delay: index * 0.05, duration: 0.4 }}
+            className="px-6 border-b border-grid last:border-b-0 bg-[var(--color-brand-bg)] group cursor-default flex flex-col justify-center h-[6rem]"
+        >
+            <div className="flex items-center gap-4 shrink-0">
+                <service.Icon size={24} weight="thin" className="opacity-40 group-hover:opacity-80 transition-opacity duration-300 flex-shrink-0" />
+                <span className="font-heading tracking-widest uppercase text-[1rem] opacity-90">
+                    {service.name}
+                </span>
+            </div>
+            <div className="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-[grid-template-rows] duration-300 ease-out pl-10">
+                <div className="overflow-hidden">
+                    <p className="text-xs opacity-50 leading-relaxed font-sans pt-1">
+                        {service.desc}
+                    </p>
+                </div>
+            </div>
+        </motion.div>
+    );
+}
+
+export default function EcosystemSection() {
+    return (
+        <section id="ecosystem" className="w-full border-b border-grid bg-[var(--color-brand-bg)] flex flex-col">
+
+            {/* ── Top Header Row ── */}
+            <div className="w-full grid grid-cols-1 lg:grid-cols-2 bg-[var(--color-brand-border)] gap-[var(--stroke-width)] border-b border-grid">
+                <div className="relative p-8 md:p-12 lg:p-20 bg-[var(--color-brand-bg)] flex items-end">
+                    <GridMarker className="bottom-[-1px] right-[-1px] hidden lg:block" />
+                    <motion.h2
+                        initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}
+                        className="leading-[0.9] uppercase tracking-tight flex flex-col"
+                    >
+                        <span>Viss Pasākumam.</span>
+                        <span>Vienuviet.</span>
+                    </motion.h2>
+                </div>
+                <div className="p-8 md:p-12 lg:p-20 flex items-center bg-[var(--color-brand-bg)]">
+                    <motion.p
+                        initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }}
+                        className="text-[1rem] max-w-sm xl:max-w-md opacity-80 leading-relaxed font-sans"
+                    >
+                        Vienīgā pasākumu vieta Rīgā, kur viss tehniskais, radošais un servisa nodrošinājums atrodas rokas stiepiena attālumā.
+                    </motion.p>
+                </div>
+            </div>
+
+            {/* ── Second Row: 3D Map (Left) + List (Right) ── */}
+            <div className="w-full grid grid-cols-1 lg:grid-cols-2">
+
+                {/* Left Column: 3D Map Viewer */}
+                <div className="relative w-full h-[300px] sm:h-[400px] lg:h-auto min-h-[100%] border-b lg:border-b-0 lg:border-r border-grid bg-[var(--color-brand-bg)] overflow-hidden">
+                    <MapViewer3D />
+                </div>
+
+                {/* Right Column: Services List */}
+                <div className="flex flex-col w-full bg-[var(--color-brand-bg)]">
+                    {SERVICES.map((s, i) => (
+                        <ServiceItem key={s.name} service={s} index={i} />
+                    ))}
+                </div>
+
+            </div>
+        </section>
+    );
+}
