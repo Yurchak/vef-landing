@@ -35,7 +35,7 @@ export default function SocialProofSection() {
                     <GridMarker className="bottom-0 right-[-1px] hidden md:block text-[var(--color-brand-text)] opacity-40" />
                     <motion.h2
                         initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-                        className="text-2xl md:text-3xl lg:text-4xl tracking-tight mb-4 uppercase font-heading leading-none"
+                        className="text-2xl md:text-3xl lg:text-4xl tracking-tight uppercase font-heading leading-none"
                     >
                         150+ neaizmirstami<br />pasākumi
                     </motion.h2>

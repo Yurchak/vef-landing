@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { GridMarker } from '../components/GridMarker';
 import { SpeakerHifiIcon, ForkKnifeIcon, MartiniIcon, PaletteIcon, ShieldIcon, CameraIcon, LightbulbIcon, NewspaperIcon } from '@phosphor-icons/react';
@@ -14,22 +15,23 @@ const SERVICES = [
     { name: "Mediju Atbalsts", Icon: NewspaperIcon, desc: "Sadarbības tīkls ar ziņu aģentūrām un radio stacijām publisko pasākumu popularizēšanai." }
 ];
 
-function ServiceItem({ service, index }) {
+function ServiceItem({ service, index, isOpen, onToggle }) {
     return (
         <motion.div
             initial={{ opacity: 0, x: 10 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-5%" }}
             transition={{ delay: index * 0.05, duration: 0.4 }}
-            className="px-6 border-b border-grid last:border-b-0 bg-[var(--color-brand-bg)] group cursor-default flex flex-col justify-center h-[80px]"
+            className="px-6 border-b border-grid last:border-b-0 bg-[var(--color-brand-bg)] group cursor-pointer flex flex-col justify-center h-[80px]"
+            onClick={onToggle}
         >
             <div className="flex items-center gap-4 shrink-0">
-                <service.Icon size={24} weight="thin" className="opacity-40 group-hover:opacity-80 transition-opacity duration-300 flex-shrink-0" />
+                <service.Icon size={24} weight="thin" className={`${isOpen ? 'opacity-80' : 'opacity-40'} group-hover:opacity-80 transition-opacity duration-300 flex-shrink-0`} />
                 <span className="font-heading tracking-widest uppercase text-[1rem] opacity-90">
                     {service.name}
                 </span>
             </div>
-            <div className="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-[grid-template-rows] duration-300 ease-out pl-10">
+            <div className={`grid ${isOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'} group-hover:grid-rows-[1fr] transition-[grid-template-rows] duration-300 ease-out pl-10`}>
                 <div className="overflow-hidden">
                     <p className="text-xs opacity-50 leading-relaxed font-sans">
                         {service.desc}
@@ -37,6 +39,23 @@ function ServiceItem({ service, index }) {
                 </div>
             </div>
         </motion.div>
+    );
+}
+
+function ServicesList() {
+    const [openIndex, setOpenIndex] = useState(null);
+    return (
+        <div className="flex flex-col w-full bg-[var(--color-brand-bg)]">
+            {SERVICES.map((s, i) => (
+                <ServiceItem
+                    key={s.name}
+                    service={s}
+                    index={i}
+                    isOpen={openIndex === i}
+                    onToggle={() => setOpenIndex(openIndex === i ? null : i)}
+                />
+            ))}
+        </div>
     );
 }
 
@@ -75,11 +94,7 @@ export default function EcosystemSection() {
                 </div>
 
                 {/* Right Column: Services List */}
-                <div className="flex flex-col w-full bg-[var(--color-brand-bg)]">
-                    {SERVICES.map((s, i) => (
-                        <ServiceItem key={s.name} service={s} index={i} />
-                    ))}
-                </div>
+                <ServicesList />
 
             </div>
         </section>

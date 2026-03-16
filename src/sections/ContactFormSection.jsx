@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Button } from '../components/Button';
-import { CheckCircle, ArrowRight, Clock } from '@phosphor-icons/react';
+import { CheckCircleIcon, ArrowRightIcon, ClockIcon } from '@phosphor-icons/react';
 import { GridMarker } from '../components/GridMarker';
 
 export default function ContactFormSection() {
@@ -40,13 +39,13 @@ export default function ContactFormSection() {
                         </motion.h2>
                     </div>
 
-                    <div className="relative p-8 md:p-12 lg:p-20 bg-[var(--color-brand-bg)] flex flex-col justify-center min-h-[16rem]">
+                    <div className="relative p-8 md:p-12 lg:p-20 bg-[var(--color-brand-bg)] flex flex-col justify-center min-h-[16rem] border-b lg:border-b-0 border-grid">
                         <GridMarker className="top-0 right-[-1px] hidden lg:block" />
                         <motion.div
                             initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1, duration: 0.6 }}
                             className="flex items-start md:items-center gap-6"
                         >
-                            <Clock size={64} weight="light" className="opacity-40 flex-shrink-0" />
+                            <ClockIcon size={64} weight="light" className="opacity-40 flex-shrink-0" />
                             <p className="text-lg md:text-xl max-w-md opacity-80 leading-relaxed font-heading m-0">
                                 Padalies ar savu vīziju, un mēs sazināsimies ar Tevi 24 stundu laikā.
                             </p>
@@ -55,13 +54,13 @@ export default function ContactFormSection() {
                 </div>
 
                 {/* Right Side: Form */}
-                <div className="flex flex-col w-full h-full bg-[var(--color-brand-border)] gap-[var(--stroke-width)]">
+                <div className="flex flex-col w-full h-full">
                     {submitted ? (
                         <motion.div
                             initial={{ opacity: 0 }} animate={{ opacity: 1 }}
                             className="flex flex-col items-center justify-center p-12 lg:p-24 bg-[var(--color-brand-bg)] text-center h-full min-h-[500px]"
                         >
-                            <CheckCircle size={64} weight="light" className="mb-8" />
+                            <CheckCircleIcon size={64} weight="light" className="mb-8" />
                             <h3 className="text-3xl font-heading uppercase mb-4 tracking-tight">Paldies!</h3>
                             <p className="opacity-80 leading-relaxed font-sans max-w-sm mx-auto">Mēs esam saņēmuši Tavu ziņu. Sazināsimies 24 stundu laikā.</p>
                             <button className="mt-8 uppercase font-medium tracking-widest text-xs underline font-heading underline-offset-8 hover:text-[var(--color-brand-cta)] transition-colors cursor-pointer" onClick={() => setSubmitted(false)}>Sūtīt vēlreiz</button>
@@ -102,7 +101,7 @@ export default function ContactFormSection() {
 
                             <div className="bg-[var(--color-brand-bg)] p-6 lg:p-8 flex flex-col">
                                 <label className="text-[10px] uppercase tracking-widest font-bold opacity-60 mb-5">INTERESĒJOŠĀS TELPAS</label>
-                                <div className="grid grid-cols-2 lg:grid-cols-5 gap-2">
+                                <div className="grid grid-cols-3 lg:grid-cols-5 gap-2">
                                     {["VEF Mansards", "VEF Spīdola", "VEF Vasarnīca", "VEF Promenāde", "Vēl nezinu"].map(venue => (
                                         <label key={venue} className="flex flex-col items-center justify-center gap-3 cursor-pointer group p-2 hover:bg-black/5 transition-colors text-center relative">
                                             <input type="checkbox" value={venue} className="peer absolute opacity-0 w-full h-full cursor-pointer" />
@@ -125,7 +124,7 @@ export default function ContactFormSection() {
                             <div className="bg-[var(--color-brand-bg)] flex justify-end">
                                 <button type="submit" className="flex items-center justify-center gap-4 w-full py-8 px-12 bg-[var(--color-brand-accent)] hover:bg-[var(--color-brand-cta-hover)] uppercase font-heading font-medium tracking-widest text-[1rem] transition-colors duration-400 cursor-pointer group">
                                     <span>Sūtīt Ziņu</span>
-                                    <ArrowRight size={20} weight="light" className="mb-[2px] transform group-hover:translate-x-1 transition-transform" />
+                                    <ArrowRightIcon size={20} weight="light" className="mb-[2px] transform group-hover:translate-x-1 transition-transform" />
                                 </button>
                             </div>
                         </motion.form>

@@ -13,13 +13,9 @@ const EVENTS = [
     { name: "Sports", image: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=800&h=800&fit=crop" }
 ];
 
-function EventCard({ event, index }) {
+function EventCard({ event }) {
     return (
-        <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true, margin: "-5%" }}
-            transition={{ delay: index * 0.05, duration: 0.5 }}
+        <div
             className="aspect-square bg-[var(--color-brand-bg)] group relative flex items-end overflow-hidden transition-all duration-500"
         >
             <img
@@ -32,7 +28,7 @@ function EventCard({ event, index }) {
             <h4 className="relative z-10 font-heading leading-tight uppercase transition-colors duration-500 text-white group-hover:text-[var(--color-brand-accent)] text-sm lg:text-base p-4 lg:p-6">
                 {event.name}
             </h4>
-        </motion.div>
+        </div>
     );
 }
 
@@ -54,8 +50,8 @@ export default function BentoGridSection() {
                 </div>
 
                 {/* ── Event Cards ── */}
-                {EVENTS.map((event, i) => (
-                    <EventCard key={event.name} event={event} index={i} />
+                {EVENTS.map((event) => (
+                    <EventCard key={event.name} event={event} />
                 ))}
 
             </div>
