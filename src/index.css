@@ -2,7 +2,8 @@
 
 @theme {
   --font-heading: "Clash Grotesk", sans-serif;
-  --font-sans: "JetBrains Mono", monospace;
+  --font-sans: "Clash Grotesk", sans-serif;
+  --font-data: "JetBrains Mono", monospace;
 
   --color-brand-bg: #dee1e7;
   --color-brand-bg-alt: #caccd3;
@@ -25,7 +26,7 @@
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    min-height: 100vh;
+    min-height: 100dvh;
     position: relative;
     overflow-x: hidden;
   }
@@ -39,6 +40,40 @@
   select,
   textarea {
     font-size: 16px;
+  }
+
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible {
+    outline: 2px solid var(--color-brand-accent);
+    outline-offset: -2px;
+  }
+
+  .skip-to-content {
+    position: absolute;
+    left: -9999px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    z-index: 9999;
+    padding: 1rem 2rem;
+    background: var(--color-brand-accent);
+    color: white;
+    font-family: var(--font-heading);
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 500;
+  }
+
+  .skip-to-content:focus {
+    left: 0;
+    top: 0;
+    width: auto;
+    height: auto;
   }
 
 

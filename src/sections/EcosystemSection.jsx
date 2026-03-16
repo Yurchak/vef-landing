@@ -26,7 +26,7 @@ function ServiceItem({ service, index, isOpen, onToggle }) {
             onClick={onToggle}
         >
             <div className="flex items-center gap-4 shrink-0">
-                <service.Icon size={24} weight="thin" className={`${isOpen ? 'opacity-80' : 'opacity-40'} group-hover:opacity-80 transition-opacity duration-300 flex-shrink-0`} />
+                <service.Icon size={24} weight="light" className={`${isOpen ? 'opacity-80' : 'opacity-40'} group-hover:opacity-80 transition-opacity duration-300 flex-shrink-0`} />
                 <span className="font-heading tracking-widest uppercase text-[1rem] opacity-90">
                     {service.name}
                 </span>
@@ -71,7 +71,7 @@ export default function EcosystemSection() {
                         initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}
                         className="leading-[0.9] uppercase tracking-tight flex flex-col"
                     >
-                        <span>Viss Pasākumam.</span>
+                        <span>Viss pasākumam.</span>
                         <span>Vienuviet.</span>
                     </motion.h2>
                 </div>
@@ -89,7 +89,7 @@ export default function EcosystemSection() {
             <div className="w-full grid grid-cols-1 lg:grid-cols-2">
 
                 {/* Left Column: 3D Map Viewer */}
-                <div className="relative w-full h-[300px] sm:h-[400px] lg:h-auto min-h-[100%] border-b lg:border-b-0 lg:border-r border-grid bg-[var(--color-brand-bg)] overflow-hidden">
+                <div className="relative w-full h-[390px] sm:h-[520px] lg:h-auto min-h-[100%] border-b lg:border-b-0 lg:border-r border-grid bg-[var(--color-brand-bg)] overflow-hidden">
                     <MapViewer3D />
                 </div>
 

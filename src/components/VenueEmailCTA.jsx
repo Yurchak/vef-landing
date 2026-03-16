@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight, Check } from '@phosphor-icons/react';
+import { ArrowRightIcon, CheckIcon } from '@phosphor-icons/react';
 
 const STATES = { IDLE: 'idle', INPUT: 'input', SUCCESS: 'success' };
 
@@ -66,7 +66,7 @@ export default function VenueEmailCTA({ venueName }) {
                             <span className="uppercase font-heading font-medium text-xs tracking-widest">
                                 Apskatīt Piedāvājumu
                             </span>
-                            <ArrowRight size={16} className="transform group-hover/link:translate-x-1 transition-transform" />
+                            <ArrowRightIcon size={16} weight="light" className="transform group-hover/link:translate-x-1 group-active/link:translate-x-2 transition-transform" />
                         </motion.button>
                     )}
 
@@ -109,7 +109,7 @@ export default function VenueEmailCTA({ venueName }) {
                                 <span className="uppercase font-heading font-medium text-xs tracking-widest whitespace-nowrap">
                                     Saņemt
                                 </span>
-                                <ArrowRight size={14} />
+                                <ArrowRightIcon size={14} weight="light" />
                             </motion.button>
                         </motion.form>
                     )}
@@ -121,7 +121,7 @@ export default function VenueEmailCTA({ venueName }) {
                             {...slideIn}
                             className="absolute inset-0 px-6 flex items-center gap-2"
                         >
-                            <Check size={16} weight="bold" className="text-green-600 shrink-0" />
+                            <CheckIcon size={16} weight="light" className="text-green-600 shrink-0" />
                             <span className="uppercase font-heading font-medium text-xs tracking-widest">
                                 Piedāvājums tika nosūtīts uz tavu e-pastu!
                             </span>

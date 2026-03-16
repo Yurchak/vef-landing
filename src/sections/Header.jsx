@@ -1,6 +1,5 @@
 import React from 'react';
-import { Button } from '../components/Button';
-import { ArrowRight } from '@phosphor-icons/react';
+import { ArrowRightIcon } from '@phosphor-icons/react';
 import { GridMarker } from '../components/GridMarker';
 
 export default function Header() {
@@ -33,7 +32,7 @@ export default function Header() {
                         className="flex items-center justify-center gap-2 px-8 lg:px-12 border-l border-grid hover:bg-[var(--color-brand-accent)] transition-colors duration-400 font-heading text-xs font-medium uppercase tracking-widest group cursor-pointer"
                     >
                         Rezervēt
-                        <ArrowRight size={16} className="transform group-hover:translate-x-1 transition-transform" />
+                        <ArrowRightIcon size={16} weight="light" className="transform group-hover:translate-x-1 group-active:translate-x-2 transition-transform" />
                     </button>
                 </div>
             </div>

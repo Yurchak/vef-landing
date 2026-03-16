@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, useAnimation } from 'framer-motion';
-import { ArrowRight, ArrowsOut, User, Chair, ForkKnife, CaretLeft, CaretRight } from '@phosphor-icons/react';
+import { ArrowsOutIcon, UserIcon, ChairIcon, ForkKnifeIcon, CaretLeftIcon, CaretRightIcon } from '@phosphor-icons/react';
 import { GridMarker } from '../components/GridMarker';
 import VenueEmailCTA from '../components/VenueEmailCTA';
 
@@ -109,7 +109,7 @@ function VenueCard({ venue, index }) {
                 <h3 className="text-2xl md:text-3xl font-heading uppercase">{venue.title}</h3>
                 <div className="flex flex-wrap gap-2">
                     {venue.tags.slice(0, 2).map(t => (
-                        <span key={t} className="text-[9px] font-bold uppercase tracking-widest px-2 py-1 border border-grid opacity-80">
+                        <span key={t} className="text-[9px] font-bold uppercase tracking-widest px-2 py-1 border border-grid opacity-80 font-data">
                             {t}
                         </span>
                     ))}
@@ -119,20 +119,20 @@ function VenueCard({ venue, index }) {
             {/* 3. Stats 4x1 grid */}
             <div className="w-full grid grid-cols-4 bg-[var(--color-brand-border)] gap-[var(--stroke-width)] border-b border-grid shrink-0">
                 <div className="bg-[var(--color-brand-bg)] p-3 md:p-6 flex flex-col gap-1 md:gap-2 relative group/stat overflow-hidden">
-                    <span className="font-bold uppercase tracking-widest text-[8px] md:text-[9px] opacity-60 truncate">Platība</span>
-                    <span className="text-sm md:text-base font-medium flex items-center gap-1.5"><ArrowsOut className="opacity-40" size={14} />{venue.area}</span>
+                    <span className="font-bold uppercase tracking-widest text-[8px] md:text-[9px] opacity-60 truncate font-data">Platība</span>
+                    <span className="text-sm md:text-base font-medium flex items-center gap-1.5 font-data"><ArrowsOutIcon className="opacity-40" size={14} />{venue.area}</span>
                 </div>
                 <div className="bg-[var(--color-brand-bg)] p-3 md:p-6 flex flex-col gap-1 md:gap-2 relative group/stat overflow-hidden">
-                    <span className="font-bold uppercase tracking-widest text-[8px] md:text-[9px] opacity-60 truncate">Stāvvietas</span>
-                    <span className="text-sm md:text-base font-medium flex items-center gap-1.5"><User className="opacity-40" size={14} />{venue.standing}</span>
+                    <span className="font-bold uppercase tracking-widest text-[8px] md:text-[9px] opacity-60 truncate font-data">Stāvvietas</span>
+                    <span className="text-sm md:text-base font-medium flex items-center gap-1.5 font-data"><UserIcon className="opacity-40" size={14} />{venue.standing}</span>
                 </div>
                 <div className="bg-[var(--color-brand-bg)] p-3 md:p-6 flex flex-col gap-1 md:gap-2 relative group/stat overflow-hidden">
-                    <span className="font-bold uppercase tracking-widest text-[8px] md:text-[9px] opacity-60 truncate">Sēdvietas</span>
-                    <span className="text-sm md:text-base font-medium flex items-center gap-1.5"><Chair className="opacity-40" size={14} />{venue.seated}</span>
+                    <span className="font-bold uppercase tracking-widest text-[8px] md:text-[9px] opacity-60 truncate font-data">Sēdvietas</span>
+                    <span className="text-sm md:text-base font-medium flex items-center gap-1.5 font-data"><ChairIcon className="opacity-40" size={14} />{venue.seated}</span>
                 </div>
                 <div className="bg-[var(--color-brand-bg)] p-3 md:p-6 flex flex-col gap-1 md:gap-2 relative group/stat overflow-hidden">
-                    <span className="font-bold uppercase tracking-widest text-[8px] md:text-[9px] opacity-60 truncate">Banketiem</span>
-                    <span className="text-sm md:text-base font-medium flex items-center gap-1.5"><ForkKnife className="opacity-40" size={14} />{venue.guests}</span>
+                    <span className="font-bold uppercase tracking-widest text-[8px] md:text-[9px] opacity-60 truncate font-data">Banketiem</span>
+                    <span className="text-sm md:text-base font-medium flex items-center gap-1.5 font-data"><ForkKnifeIcon className="opacity-40" size={14} />{venue.guests}</span>
                 </div>
             </div>
 
@@ -221,8 +221,7 @@ export default function VenuesSection() {
                         initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}
                         className="leading-[0.9] uppercase tracking-tight flex flex-col"
                     >
-                        <span>Pasākumu telpas</span>
-                        <span>katram mērogam.</span>
+                        <span>Pasākumu telpas katram mērogam.</span>
                     </motion.h2>
                 </div>
                 <div className="px-8 py-16 md:px-12 lg:p-20 flex items-center bg-[var(--color-brand-bg)]">
@@ -242,14 +241,14 @@ export default function VenuesSection() {
                     className="w-16 h-16 flex items-center justify-center border-l border-grid hover:bg-[var(--color-brand-accent)] transition-colors group cursor-pointer"
                     aria-label="Iepriekšējā telpa"
                 >
-                    <CaretLeft size={24} weight="bold" className="group-hover:-translate-x-0.5 transition-transform" />
+                    <CaretLeftIcon size={24} weight="light" className="group-hover:-translate-x-0.5 group-active:-translate-x-1.5 transition-transform" />
                 </button>
                 <button
                     onClick={handleNext}
                     className="w-16 h-16 flex items-center justify-center border-l border-grid hover:bg-[var(--color-brand-accent)] transition-colors group cursor-pointer"
                     aria-label="Nākamā telpa"
                 >
-                    <CaretRight size={24} weight="bold" className="group-hover:translate-x-0.5 transition-transform" />
+                    <CaretRightIcon size={24} weight="light" className="group-hover:translate-x-0.5 group-active:translate-x-1.5 transition-transform" />
                 </button>
             </div>
 

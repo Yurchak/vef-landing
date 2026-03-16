@@ -11,8 +11,11 @@ import Footer from './sections/Footer';
 function App() {
   return (
     <>
+      <a href="#main-content" className="skip-to-content">
+        Pāriet uz saturu
+      </a>
       <Header />
-      <main>
+      <main id="main-content">
         <HeroSection />
         <SocialProofSection />
         <VenuesSection />
