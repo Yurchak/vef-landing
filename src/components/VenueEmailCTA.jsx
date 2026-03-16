@@ -61,10 +61,10 @@ export default function VenueEmailCTA({ venueName }) {
                             exit={{ opacity: 0, transition: { duration: 0.15 } }}
                             onClick={handleActivate}
                             className="absolute inset-0 px-6 flex items-center gap-2 group/link hover:opacity-70 transition-opacity cursor-pointer w-full"
-                            aria-label={`Apskati piedāvājumu par ${venueName}`}
+                            aria-label={`Apskatīt piedāvājumu par ${venueName}`}
                         >
                             <span className="uppercase font-heading font-medium text-xs tracking-widest">
-                                Apskati Piedāvājumu
+                                Apskatīt Piedāvājumu
                             </span>
                             <ArrowRight size={16} className="transform group-hover/link:translate-x-1 transition-transform" />
                         </motion.button>

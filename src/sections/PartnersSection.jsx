@@ -1,14 +1,14 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { GridMarker } from '../components/GridMarker';
-import { Martini, ForkKnife, SpeakerHifi, Palette, Shield } from '@phosphor-icons/react';
+import { MartiniIcon, ForkKnifeIcon, SpeakerHifiIcon, PaletteIcon, ShieldIcon } from '@phosphor-icons/react';
 
 const PARTNERS = [
-    { name: "Bārs", Icon: Martini },
-    { name: "Catering", Icon: ForkKnife },
-    { name: "Tehnika", Icon: SpeakerHifi },
-    { name: "Dekorācijas", Icon: Palette },
-    { name: "Drošība", Icon: Shield }
+    { name: "Bārs", Icon: MartiniIcon },
+    { name: "Catering", Icon: ForkKnifeIcon },
+    { name: "Tehnika", Icon: SpeakerHifiIcon },
+    { name: "Dekorācijas", Icon: PaletteIcon },
+    { name: "Drošība", Icon: ShieldIcon }
 ];
 
 export default function PartnersSection() {
@@ -17,7 +17,7 @@ export default function PartnersSection() {
             <div className="w-full grid grid-cols-1 lg:grid-cols-2">
 
                 {/* Intro column */}
-                <div className="relative p-8 md:p-12 lg:p-20 border-b lg:border-b-0 lg:border-r border-grid flex flex-col justify-center bg-black/5">
+                <div className="relative px-8 py-16 md:px-12 lg:p-20 border-b lg:border-b-0 lg:border-r border-grid flex flex-col justify-center bg-black/5">
                     <GridMarker className="top-0 right-[-1px] hidden lg:block" />
                     <GridMarker className="bottom-0 right-[-1px] hidden lg:block" />
                     <motion.div
@@ -41,7 +41,7 @@ export default function PartnersSection() {
                 </div>
 
                 {/* Partners grid */}
-                <div className="grid grid-cols-2 bg-[var(--color-brand-border)] gap-[1px]">
+                <div className="grid grid-cols-2 bg-[var(--color-brand-border)] gap-[var(--stroke-width)]">
                     {PARTNERS.map((partner, i) => (
                         <motion.div
                             key={partner.name}

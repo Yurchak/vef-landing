@@ -94,7 +94,7 @@ function VenueCard({ venue, index }) {
                             <button
                                 key={i}
                                 onClick={() => setActiveImageIndex(i)}
-                                className={`w-12 h-12 md:w-16 md:h-16 overflow-hidden border transition-all duration-300 ${activeImageIndex === i ? 'border-white/50 scale-110 shadow-lg' : 'border-transparent opacity-60 hover:opacity-100 hover:scale-105'}`}
+                                className={`w-12 h-12 md:w-16 md:h-16 overflow-hidden border transition-all duration-300 cursor-pointer ${activeImageIndex === i ? 'border-white/50 scale-110 shadow-lg' : 'border-transparent opacity-60 hover:opacity-100 hover:scale-105'}`}
                                 aria-label={`View image ${i + 1}`}
                             >
                                 <img src={img} alt={`${venue.title} thumbnail ${i + 1}`} loading="lazy" className="w-full h-full object-cover" />
@@ -118,19 +118,19 @@ function VenueCard({ venue, index }) {
 
             {/* 3. Stats 4x1 grid */}
             <div className="w-full grid grid-cols-4 bg-[var(--color-brand-border)] gap-[var(--stroke-width)] border-b border-grid shrink-0">
-                <div className="bg-[var(--color-brand-bg)] p-6 flex flex-col gap-1 md:gap-2 relative group/stat overflow-hidden">
+                <div className="bg-[var(--color-brand-bg)] p-3 md:p-6 flex flex-col gap-1 md:gap-2 relative group/stat overflow-hidden">
                     <span className="font-bold uppercase tracking-widest text-[8px] md:text-[9px] opacity-60 truncate">Platība</span>
                     <span className="text-sm md:text-base font-medium flex items-center gap-1.5"><ArrowsOut className="opacity-40" size={14} />{venue.area}</span>
                 </div>
-                <div className="bg-[var(--color-brand-bg)] p-6 flex flex-col gap-1 md:gap-2 relative group/stat overflow-hidden">
+                <div className="bg-[var(--color-brand-bg)] p-3 md:p-6 flex flex-col gap-1 md:gap-2 relative group/stat overflow-hidden">
                     <span className="font-bold uppercase tracking-widest text-[8px] md:text-[9px] opacity-60 truncate">Stāvvietas</span>
                     <span className="text-sm md:text-base font-medium flex items-center gap-1.5"><User className="opacity-40" size={14} />{venue.standing}</span>
                 </div>
-                <div className="bg-[var(--color-brand-bg)] p-6 flex flex-col gap-1 md:gap-2 relative group/stat overflow-hidden">
+                <div className="bg-[var(--color-brand-bg)] p-3 md:p-6 flex flex-col gap-1 md:gap-2 relative group/stat overflow-hidden">
                     <span className="font-bold uppercase tracking-widest text-[8px] md:text-[9px] opacity-60 truncate">Sēdvietas</span>
                     <span className="text-sm md:text-base font-medium flex items-center gap-1.5"><Chair className="opacity-40" size={14} />{venue.seated}</span>
                 </div>
-                <div className="bg-[var(--color-brand-bg)] p-6 flex flex-col gap-1 md:gap-2 relative group/stat overflow-hidden">
+                <div className="bg-[var(--color-brand-bg)] p-3 md:p-6 flex flex-col gap-1 md:gap-2 relative group/stat overflow-hidden">
                     <span className="font-bold uppercase tracking-widest text-[8px] md:text-[9px] opacity-60 truncate">Banketiem</span>
                     <span className="text-sm md:text-base font-medium flex items-center gap-1.5"><ForkKnife className="opacity-40" size={14} />{venue.guests}</span>
                 </div>
@@ -215,17 +215,17 @@ export default function VenuesSection() {
         <section id="venues" className="w-full border-b border-grid flex flex-col overflow-hidden">
             {/* Top Header Row */}
             <div className="w-full grid grid-cols-1 md:grid-cols-2 bg-[var(--color-brand-border)] gap-[var(--stroke-width)]">
-                <div className="relative p-8 md:p-12 lg:p-20 bg-[var(--color-brand-bg)] flex items-end">
+                <div className="relative px-8 py-16 md:px-12 lg:p-20 bg-[var(--color-brand-bg)] flex items-end">
                     <GridMarker className="bottom-[-1px] right-[-1px] hidden md:block" />
                     <motion.h2
                         initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}
                         className="leading-[0.9] uppercase tracking-tight flex flex-col"
                     >
                         <span>Pasākumu telpas</span>
-                        <span>katram mērogam</span>
+                        <span>katram mērogam.</span>
                     </motion.h2>
                 </div>
-                <div className="p-8 md:p-12 lg:p-20 flex items-center bg-[var(--color-brand-bg)]">
+                <div className="px-8 py-16 md:px-12 lg:p-20 flex items-center bg-[var(--color-brand-bg)]">
                     <motion.p
                         initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }}
                         className="text-[1rem] max-w-sm xl:max-w-md opacity-80 leading-relaxed"
@@ -239,14 +239,14 @@ export default function VenuesSection() {
             <div className="w-full h-16 flex items-center justify-end border-t border-b border-grid">
                 <button
                     onClick={handlePrev}
-                    className="w-16 h-16 flex items-center justify-center border-l border-grid hover:bg-[var(--color-brand-accent)] transition-colors group"
+                    className="w-16 h-16 flex items-center justify-center border-l border-grid hover:bg-[var(--color-brand-accent)] transition-colors group cursor-pointer"
                     aria-label="Iepriekšējā telpa"
                 >
                     <CaretLeft size={24} weight="bold" className="group-hover:-translate-x-0.5 transition-transform" />
                 </button>
                 <button
                     onClick={handleNext}
-                    className="w-16 h-16 flex items-center justify-center border-l border-grid hover:bg-[var(--color-brand-accent)] transition-colors group"
+                    className="w-16 h-16 flex items-center justify-center border-l border-grid hover:bg-[var(--color-brand-accent)] transition-colors group cursor-pointer"
                     aria-label="Nākamā telpa"
                 >
                     <CaretRight size={24} weight="bold" className="group-hover:translate-x-0.5 transition-transform" />

@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowDown } from '@phosphor-icons/react';
+import { ArrowDownIcon } from '@phosphor-icons/react';
 import { GridMarker } from '../components/GridMarker';
 import vefPromenadeHero from '../assets/vef-promenade_hero.webp';
 
@@ -10,7 +10,7 @@ export default function HeroSection() {
             <div className="w-full grid grid-cols-1 lg:grid-cols-2 min-h-[calc(100svh-5rem)]">
 
                 {/* Left Column - Unified CSS Grid */}
-                <div className="grid grid-cols-[1fr_auto] sm:grid-cols-[5rem_1fr_auto] lg:grid-cols-[6rem_1fr_auto] grid-rows-[auto_1fr] sm:grid-rows-[1fr_auto] gap-[var(--stroke-width)] bg-[var(--color-brand-border)] border-l lg:border-r border-grid">
+                <div className="grid grid-cols-[1fr_auto] sm:grid-cols-[5rem_1fr_auto] lg:grid-cols-[6rem_1fr_auto] grid-rows-[auto_1fr] sm:grid-rows-[1fr_auto] gap-[var(--stroke-width)] bg-[var(--color-brand-border)] lg:border-l lg:border-r border-grid">
 
                     {/* Top Left: Vertical Bar (Hidden on Mobile) */}
                     <div className="hidden sm:flex flex-col items-center justify-center relative bg-[var(--color-brand-bg)] col-start-1 col-end-2 row-start-1 row-end-2">
@@ -37,7 +37,7 @@ export default function HeroSection() {
                         >
                             Pilna Servisa<br />
                             Pasākumu<br />
-                            Kvartāls
+                            Kvartāls.
                         </motion.h1>
                     </div>
 
@@ -63,7 +63,7 @@ export default function HeroSection() {
                         <div className="absolute inset-0 flex items-center justify-center p-6 md:p-8">
                             <GridMarker className="top-[0px] left-[0px] hidden sm:block z-10" />
                             <span className="font-heading font-medium text-lg md:text-xl lg:text-2xl uppercase transition-transform duration-400 flex flex-col items-center group-hover:translate-y-3 relative text-center">
-                                <ArrowDown size={24} weight="light" className="absolute bottom-full mb-2 opacity-0 -translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-400" />
+                                <ArrowDownIcon size={24} weight="light" className="absolute bottom-full mb-2 opacity-0 -translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-400" />
                                 Apskatīt Telpas
                             </span>
                         </div>

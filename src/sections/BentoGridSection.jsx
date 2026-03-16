@@ -10,14 +10,14 @@ const EVENTS = [
     { name: "Biznesa Forumi", image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&h=800&fit=crop" },
     { name: "Kino Vakari", image: "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=800&h=800&fit=crop" },
     { name: "Auto Prezentācijas", image: "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=800&h=800&fit=crop" },
-    { name: "Kultūras Notikumi", image: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=800&h=800&fit=crop" }
+    { name: "Sports", image: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=800&h=800&fit=crop" }
 ];
 
 function EventCard({ event, index }) {
     return (
         <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true, margin: "-5%" }}
             transition={{ delay: index * 0.05, duration: 0.5 }}
             className="aspect-square bg-[var(--color-brand-bg)] group relative flex items-end overflow-hidden transition-all duration-500"
@@ -42,7 +42,7 @@ export default function BentoGridSection() {
             <div className="grid grid-cols-2 lg:grid-cols-5 w-full bg-[var(--color-brand-border)] gap-[var(--stroke-width)]">
 
                 {/* ── Headline Block (2 columns wide, 1 row tall) ── */}
-                <div className="col-span-2 aspect-[2/1] lg:aspect-auto flex items-center p-8 md:p-12 lg:p-16 bg-[var(--color-brand-bg)] relative">
+                <div className="col-span-2 lg:aspect-auto flex items-center px-8 py-16 md:px-12 lg:p-16 bg-[var(--color-brand-bg)] relative">
                     <GridMarker className="bottom-[-1px] right-[-1px] hidden md:block z-20" />
                     <motion.h2
                         initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}

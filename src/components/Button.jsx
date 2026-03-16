@@ -8,7 +8,7 @@ export function Button({
     className = '',
     ...props
 }) {
-    const baseStyles = "inline-flex items-center justify-center font-bold tracking-widest uppercase transition-colors duration-200 cursor-pointer disabled:opacity-50 disabled:pointer-events-none";
+    const baseStyles = "inline-flex items-center justify-center font-heading font-medium tracking-widest uppercase transition-colors duration-200 cursor-pointer disabled:opacity-50 disabled:pointer-events-none";
 
     const variants = {
         primary: "bg-[var(--color-brand-cta)] text-white hover:bg-[var(--color-brand-accent)]",

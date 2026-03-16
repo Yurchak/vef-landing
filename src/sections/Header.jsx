@@ -8,7 +8,7 @@ export default function Header() {
         <header className="relative top-0 left-0 right-0 z-40 bg-[var(--color-brand-bg)] border-b border-grid">
             <div className="w-full h-20 flex items-stretch justify-between">
                 {/* Logo */}
-                <div className="relative flex items-center px-6 lg:px-8 border-r border-grid cursor-pointer hover:bg-[var(--color-brand-accent)] hover:text-white transition-colors duration-400">
+                <div className="relative flex items-center px-6 lg:px-8 border-r border-grid cursor-pointer hover:bg-[var(--color-brand-accent)] transition-colors duration-400">
                     <GridMarker className="bottom-[-1px] right-[-1px]" />
                     <svg viewBox="0 0 149.3 42.9" className="h-8 md:h-10 lg:h-12 w-auto fill-current" xmlns="http://www.w3.org/2000/svg">
                         <path d="M2.8,30.4h19.7L19,20.7h2l3.5,9.7h5.9V2.8H2.8V30.4z M33.2,33.2h-7.7l3.6,9.7h-2l-3.6-9.7H0V0h33.2V33.2z
@@ -30,7 +30,7 @@ export default function Header() {
                     <GridMarker className="bottom-[-1px] left-[-1px]" />
                     <button
                         onClick={() => document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' })}
-                        className="flex items-center justify-center gap-2 px-8 lg:px-12 border-l border-grid hover:bg-[var(--color-brand-accent)] transition-colors duration-400 font-heading text-xs font-medium uppercase tracking-widest group"
+                        className="flex items-center justify-center gap-2 px-8 lg:px-12 border-l border-grid hover:bg-[var(--color-brand-accent)] transition-colors duration-400 font-heading text-xs font-medium uppercase tracking-widest group cursor-pointer"
                     >
                         Rezervēt
                         <ArrowRight size={16} className="transform group-hover:translate-x-1 transition-transform" />

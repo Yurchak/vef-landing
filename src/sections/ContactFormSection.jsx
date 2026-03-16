@@ -20,7 +20,7 @@ export default function ContactFormSection() {
 
                 {/* Left Side: Copy */}
                 <div className="flex flex-col lg:border-r border-grid">
-                    <div className="relative p-8 md:p-12 lg:p-20 border-b border-grid flex-1 flex flex-col justify-center">
+                    <div className="relative px-8 py-16 md:px-12 lg:p-20 border-b border-grid flex-1 flex flex-col justify-center">
                         <GridMarker className="bottom-0 right-[-1px] hidden lg:block" />
                         <motion.div
                             initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}
@@ -33,7 +33,7 @@ export default function ContactFormSection() {
 
                         <motion.h2
                             initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ ease: [0.22, 1, 0.36, 1], duration: 0.6 }}
-                            className="text-[7rem] tracking-tight uppercase leading-[0.9]"
+                            className="text-[clamp(2.5rem,7vw,7rem)] tracking-tight uppercase leading-[0.9]"
                         >
                             Sāc Plānot<br />
                             Laicīgi.
@@ -64,7 +64,7 @@ export default function ContactFormSection() {
                             <CheckCircle size={64} weight="light" className="mb-8" />
                             <h3 className="text-3xl font-heading uppercase mb-4 tracking-tight">Paldies!</h3>
                             <p className="opacity-80 leading-relaxed font-sans max-w-sm mx-auto">Mēs esam saņēmuši Tavu ziņu. Sazināsimies 24 stundu laikā.</p>
-                            <button className="mt-8 uppercase font-bold tracking-widest text-xs underline underline-offset-8 hover:text-[var(--color-brand-cta)] transition-colors cursor-pointer" onClick={() => setSubmitted(false)}>Sūtīt vēlreiz</button>
+                            <button className="mt-8 uppercase font-medium tracking-widest text-xs underline font-heading underline-offset-8 hover:text-[var(--color-brand-cta)] transition-colors cursor-pointer" onClick={() => setSubmitted(false)}>Sūtīt vēlreiz</button>
                         </motion.div>
                     ) : (
                         <motion.form
@@ -123,9 +123,9 @@ export default function ContactFormSection() {
                             </div>
 
                             <div className="bg-[var(--color-brand-bg)] flex justify-end">
-                                <button type="submit" className="flex items-center justify-center gap-4 w-full py-8 px-12 bg-transparent hover:bg-[var(--color-brand-accent)] uppercase font-heading tracking-widest text-[1rem] transition-colors duration-400">
+                                <button type="submit" className="flex items-center justify-center gap-4 w-full py-8 px-12 bg-[var(--color-brand-accent)] hover:bg-[var(--color-brand-cta-hover)] uppercase font-heading font-medium tracking-widest text-[1rem] transition-colors duration-400 cursor-pointer group">
                                     <span>Sūtīt Ziņu</span>
-                                    <ArrowRight size={20} weight="light" className="mb-[2px]" />
+                                    <ArrowRight size={20} weight="light" className="mb-[2px] transform group-hover:translate-x-1 transition-transform" />
                                 </button>
                             </div>
                         </motion.form>

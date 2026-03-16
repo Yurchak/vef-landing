@@ -1,18 +1,17 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import { GridMarker } from '../components/GridMarker';
-import { SpeakerHifi, ForkKnife, Martini, Palette, Shield, Camera, Lightbulb, Truck } from '@phosphor-icons/react';
+import { SpeakerHifiIcon, ForkKnifeIcon, MartiniIcon, PaletteIcon, ShieldIcon, CameraIcon, LightbulbIcon, NewspaperIcon } from '@phosphor-icons/react';
 import MapViewer3D from '../components/MapViewer3D';
 
 const SERVICES = [
-    { name: "Audio Tehnika", Icon: SpeakerHifi, desc: "Skaņa, gaisma, ekrāni, projektori un tehniskais personāls." },
-    { name: "Apgaismojums", Icon: Lightbulb, desc: "Radošs gaismas dizains un atmosfēras veidošana." },
-    { name: "Ēdināšana", Icon: ForkKnife, desc: "Augstākās kvalitātes uzkodas, furšeti un pilna servisa ēdināšana." },
-    { name: "Bārs", Icon: Martini, desc: "VEF Kvartāla nodrošināts bārs, personāls un plašs dzērienu klāsts." },
-    { name: "Inventārs un Dekorēšana", Icon: Palette, desc: "Galdi, krēsli un telpu noformējums no labākajiem dekoratoriem." },
-    { name: "Apsardze", Icon: Shield, desc: "Profesionāls drošības personāls un apsardzes risinājumi." },
-    { name: "Foto & Video", Icon: Camera, desc: "Profesionāla pasākuma dokumentēšana un tiešraides nodrošinājums." },
-    { name: "Mediju Atbalsts", Icon: Truck, desc: "Iekraušana, izkraušana un inventāra pārvaldība." }
+    { name: "Audio Tehnika", Icon: SpeakerHifiIcon, desc: "Skaņa jebkura mēroga pasākumam, ekrāni, projektori un tehniskais personāls." },
+    { name: "Apgaismojums", Icon: LightbulbIcon, desc: "Radošs gaismas dizains un atmosfēras veidošana." },
+    { name: "Ēdināšana", Icon: ForkKnifeIcon, desc: "Augstākās kvalitātes uzkodas, furšeti un pilna servisa ēdināšana." },
+    { name: "Bārs", Icon: MartiniIcon, desc: "VEF Kvartāla nodrošināts bārs, personāls un plašs dzērienu klāsts." },
+    { name: "Inventārs un Dekorēšana", Icon: PaletteIcon, desc: "Galdi, krēsli un telpu noformējums no labākajiem dekoratoriem." },
+    { name: "Apsardze", Icon: ShieldIcon, desc: "Profesionāls drošības personāls un apsardzes risinājumi." },
+    { name: "Foto & Video", Icon: CameraIcon, desc: "Profesionāla pasākuma dokumentēšana un tiešraides nodrošinājums." },
+    { name: "Mediju Atbalsts", Icon: NewspaperIcon, desc: "Sadarbības tīkls ar ziņu aģentūrām un radio stacijām publisko pasākumu popularizēšanai." }
 ];
 
 function ServiceItem({ service, index }) {
@@ -22,7 +21,7 @@ function ServiceItem({ service, index }) {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-5%" }}
             transition={{ delay: index * 0.05, duration: 0.4 }}
-            className="px-6 border-b border-grid last:border-b-0 bg-[var(--color-brand-bg)] group cursor-default flex flex-col justify-center h-[6rem]"
+            className="px-6 border-b border-grid last:border-b-0 bg-[var(--color-brand-bg)] group cursor-default flex flex-col justify-center h-[80px]"
         >
             <div className="flex items-center gap-4 shrink-0">
                 <service.Icon size={24} weight="thin" className="opacity-40 group-hover:opacity-80 transition-opacity duration-300 flex-shrink-0" />
@@ -32,7 +31,7 @@ function ServiceItem({ service, index }) {
             </div>
             <div className="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-[grid-template-rows] duration-300 ease-out pl-10">
                 <div className="overflow-hidden">
-                    <p className="text-xs opacity-50 leading-relaxed font-sans pt-1">
+                    <p className="text-xs opacity-50 leading-relaxed font-sans">
                         {service.desc}
                     </p>
                 </div>
@@ -47,7 +46,7 @@ export default function EcosystemSection() {
 
             {/* ── Top Header Row ── */}
             <div className="w-full grid grid-cols-1 lg:grid-cols-2 bg-[var(--color-brand-border)] gap-[var(--stroke-width)] border-b border-grid">
-                <div className="relative p-8 md:p-12 lg:p-20 bg-[var(--color-brand-bg)] flex items-end">
+                <div className="relative px-8 py-16 md:px-12 lg:p-20 bg-[var(--color-brand-bg)] flex items-end">
                     <GridMarker className="bottom-[-1px] right-[-1px] hidden lg:block" />
                     <motion.h2
                         initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}
@@ -57,7 +56,7 @@ export default function EcosystemSection() {
                         <span>Vienuviet.</span>
                     </motion.h2>
                 </div>
-                <div className="p-8 md:p-12 lg:p-20 flex items-center bg-[var(--color-brand-bg)]">
+                <div className="px-8 py-16 md:px-12 lg:p-20 flex items-center bg-[var(--color-brand-bg)]">
                     <motion.p
                         initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }}
                         className="text-[1rem] max-w-sm xl:max-w-md opacity-80 leading-relaxed font-sans"

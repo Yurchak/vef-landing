@@ -7,8 +7,8 @@
   --color-brand-bg: #dee1e7;
   --color-brand-bg-alt: #caccd3;
   --color-brand-text: #212529;
-  --color-brand-cta: #E65100;
-  --color-brand-cta-hover: #BF360C;
+  --color-brand-cta: #f76b34;
+  --color-brand-cta-hover: #eb4e1a;
   --color-brand-accent: #f76b34;
   --color-brand-border: #868e98;
   --stroke-width: 0.5px;
@@ -56,14 +56,30 @@
 
   /* Enforce --stroke-width (0.556px) on all directional combinations.
      Compound selectors (2 classes) beat Tailwind's single-class utilities. */
-  .border-grid.border   { border-width: var(--stroke-width); }
-  .border-grid.border-t { border-top-width: var(--stroke-width); }
-  .border-grid.border-b { border-bottom-width: var(--stroke-width); }
-  .border-grid.border-l { border-left-width: var(--stroke-width); }
-  .border-grid.border-r { border-right-width: var(--stroke-width); }
+  .border-grid.border {
+    border-width: var(--stroke-width);
+  }
+
+  .border-grid.border-t {
+    border-top-width: var(--stroke-width);
+  }
+
+  .border-grid.border-b {
+    border-bottom-width: var(--stroke-width);
+  }
+
+  .border-grid.border-l {
+    border-left-width: var(--stroke-width);
+  }
+
+  .border-grid.border-r {
+    border-right-width: var(--stroke-width);
+  }
 
   /* Removal modifiers need 3-part specificity to beat the 2-part rules above */
-  .border-grid.last\:border-b-0:last-child { border-bottom-width: 0; }
+  .border-grid.last\:border-b-0:last-child {
+    border-bottom-width: 0;
+  }
 
   /* Global Master Grid */
   .main-grid {
@@ -87,7 +103,19 @@
 /* Responsive border-width overrides (inside media queries so they win over the
    base compound rules above, despite equal specificity, due to source order) */
 @media (min-width: 1024px) {
-  .border-grid.lg\:border-r   { border-right-width: var(--stroke-width); }
-  .border-grid.lg\:border-b-0 { border-bottom-width: 0; }
-  .border-grid.lg\:border-t-0 { border-top-width: 0; }
+  .border-grid.lg\:border-l {
+    border-left-width: var(--stroke-width);
+  }
+
+  .border-grid.lg\:border-r {
+    border-right-width: var(--stroke-width);
+  }
+
+  .border-grid.lg\:border-b-0 {
+    border-bottom-width: 0;
+  }
+
+  .border-grid.lg\:border-t-0 {
+    border-top-width: 0;
+  }
 }
