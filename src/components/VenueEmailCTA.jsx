@@ -87,7 +87,7 @@ export default function VenueEmailCTA({ venueName }) {
                                     onChange={(e) => { setEmail(e.target.value); setError(''); }}
                                     onKeyDown={handleKeyDown}
                                     placeholder={error || t.emailPlaceholder}
-                                    className={`w-full h-full px-6 bg-transparent text-xs uppercase tracking-widest font-heading font-medium outline-none placeholder:opacity-40 ${error ? 'placeholder:text-red-500 placeholder:opacity-70' : ''}`}
+                                    className={`w-full h-full px-6 bg-transparent text-[16px] uppercase tracking-widest font-heading font-medium outline-none placeholder:opacity-40 ${error ? 'placeholder:text-red-500 placeholder:opacity-70' : ''}`}
                                     aria-label={t.emailAriaLabel}
                                     autoComplete="email"
                                 />

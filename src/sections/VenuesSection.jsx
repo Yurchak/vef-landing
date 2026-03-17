@@ -154,6 +154,8 @@ export default function VenuesSection() {
 
     useEffect(() => {
         controls.set({ x: `-${currentIndexRef.current * (100 / itemsVisible)}%` });
+        const centerOffset = itemsVisible === 1 ? 0 : Math.floor(itemsVisible / 2);
+        setActiveVenue((currentIndexRef.current + centerOffset) % VENUE_DATA.length);
     }, [itemsVisible, controls]);
 
     return (
