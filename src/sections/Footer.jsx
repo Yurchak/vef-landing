@@ -1,8 +1,11 @@
 import React from 'react';
 import { InstagramLogoIcon, LinkedinLogoIcon, FacebookLogoIcon } from '@phosphor-icons/react';
 import { GridMarker } from '../components/GridMarker';
+import { useLanguage } from '../i18n/LanguageContext';
 
 export default function Footer() {
+    const { t } = useLanguage();
+
     return (
         <footer id="footer" className="w-full bg-[var(--color-brand-bg-alt)] text-[var(--color-brand-text)] flex flex-col overflow-hidden">
             {/* Top Section - 4 Columns */}
@@ -10,7 +13,7 @@ export default function Footer() {
 
                 <div className="relative p-8 md:p-12 lg:p-16 space-y-6 bg-[var(--color-brand-bg-alt)]">
                     <GridMarker className="bottom-[-1px] right-[-1px] hidden md:block" />
-                    <h5 className="text-[10px] uppercase tracking-widest opacity-60 border-b border-grid pb-4">Adrese</h5>
+                    <h5 className="text-[10px] uppercase tracking-widest opacity-60 border-b border-grid pb-4 font-data">{t.footerAddress}</h5>
                     <div className="space-y-2 opacity-80 leading-relaxed text-sm pt-2">
                         <p>VEF Kvartāls<br />Bērzaunes iela 11A<br />Rīga, LV-1039</p>
                         <p className="mt-4 font-heading text-lg">+ 371 200 00 000</p>
@@ -20,30 +23,30 @@ export default function Footer() {
                 <div className="relative p-8 md:p-12 lg:p-16 space-y-6 bg-[var(--color-brand-bg-alt)]">
                     <GridMarker className="bottom-[-1px] right-[-1px] hidden lg:block" />
                     <GridMarker className="bottom-[-1px] left-[-1px] hidden md:block lg:hidden" />
-                    <h5 className="text-[10px] uppercase tracking-widest opacity-60 border-b border-grid pb-4">Navigācija</h5>
+                    <h5 className="text-[10px] uppercase tracking-widest opacity-60 border-b border-grid pb-4 font-data">{t.footerNav}</h5>
                     <nav className="flex flex-col space-y-4 opacity-80 pt-2">
-                        <a href="#venues" className="hover:text-[var(--color-brand-accent)] transition-colors w-max uppercase tracking-widest text-[11px] font-medium font-data">Pasākumu telpas</a>
-                        <a href="#ecosystem" className="hover:text-[var(--color-brand-accent)] transition-colors w-max uppercase tracking-widest text-[11px] font-medium font-data">Servisi</a>
-                        <a href="#bento-grid" className="hover:text-[var(--color-brand-accent)] transition-colors w-max uppercase tracking-widest text-[11px] font-medium font-data">Pasākumu veidi</a>
-                        <a href="#contact-form" className="hover:text-[var(--color-brand-accent)] transition-colors w-max uppercase tracking-widest text-[11px] font-medium font-data">Kontakti</a>
+                        <a href="#venues" className="hover:text-[var(--color-brand-accent)] transition-colors w-max uppercase tracking-widest text-[11px] font-medium">{t.footerVenues}</a>
+                        <a href="#ecosystem" className="hover:text-[var(--color-brand-accent)] transition-colors w-max uppercase tracking-widest text-[11px] font-medium">{t.footerServices}</a>
+                        <a href="#bento-grid" className="hover:text-[var(--color-brand-accent)] transition-colors w-max uppercase tracking-widest text-[11px] font-medium">{t.footerEvents}</a>
+                        <a href="#contact-form" className="hover:text-[var(--color-brand-accent)] transition-colors w-max uppercase tracking-widest text-[11px] font-medium">{t.footerContact}</a>
                     </nav>
                 </div>
 
                 <div className="relative p-8 md:p-12 lg:p-16 space-y-6 bg-[var(--color-brand-bg-alt)] flex flex-col justify-between">
                     <GridMarker className="bottom-[-1px] right-[-1px] hidden md:block" />
                     <div>
-                        <h5 className="text-[10px] uppercase tracking-widest opacity-60 border-b border-grid pb-4">Juridiskā info</h5>
+                        <h5 className="text-[10px] uppercase tracking-widest opacity-60 border-b border-grid pb-4 font-data">{t.footerLegal}</h5>
                         <nav className="flex flex-col space-y-4 opacity-80 pt-6">
-                            <a href="#contact-form" className="hover:text-[var(--color-brand-accent)] transition-colors w-max uppercase tracking-widest text-[11px] font-medium font-data">Kontakti</a>
-                            <span className="opacity-50 uppercase tracking-widest text-[11px] font-medium font-data">Privātuma politika</span>
-                            <span className="opacity-50 uppercase tracking-widest text-[11px] font-medium font-data">Lietošanas noteikumi</span>
+                            <a href="#contact-form" className="hover:text-[var(--color-brand-accent)] transition-colors w-max uppercase tracking-widest text-[11px] font-medium">{t.footerContact}</a>
+                            <span className="opacity-50 uppercase tracking-widest text-[11px] font-medium">{t.footerPrivacy}</span>
+                            <span className="opacity-50 uppercase tracking-widest text-[11px] font-medium">{t.footerTerms}</span>
                         </nav>
                     </div>
                 </div>
 
                 <div className="relative p-8 md:p-12 lg:p-16 space-y-6 bg-[var(--color-brand-bg-alt)] flex flex-col justify-between">
                     <div>
-                        <h5 className="text-[10px] uppercase tracking-widest opacity-60 border-b border-grid pb-4">Seko mums</h5>
+                        <h5 className="text-[10px] uppercase tracking-widest opacity-60 border-b border-grid pb-4 font-data">{t.footerFollow}</h5>
                         <div className="flex space-x-4 opacity-80 pt-6">
                             <a href="#" aria-label="Instagram" className="p-3 transition-colors group hover:bg-black/10">
                                 <InstagramLogoIcon size={24} weight="light" />
@@ -63,8 +66,8 @@ export default function Footer() {
             {/* Bottom Bar */}
             <div className="w-full bg-[var(--color-brand-bg-alt)] text-[var(--color-brand-text)] flex justify-center">
                 <div className="w-full p-8 md:py-8 md:px-12 lg:px-16 flex flex-col md:flex-row justify-between items-center text-[10px] uppercase tracking-widest">
-                    <span className="opacity-60 font-bold">&copy; 2026 VEF Kvartāls</span>
-                    <span className="opacity-40 mt-4 md:mt-0">Made mostly by machines</span>
+                    <span className="opacity-60 font-bold font-data">&copy; {t.footerCopyright}</span>
+                    <span className="opacity-40 mt-4 md:mt-0 font-data">{t.footerMadeBy}</span>
                 </div>
             </div>
         </footer>

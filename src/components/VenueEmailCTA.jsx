@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRightIcon, CheckIcon } from '@phosphor-icons/react';
+import { useLanguage } from '../i18n/LanguageContext';
 
 const STATES = { IDLE: 'idle', INPUT: 'input', SUCCESS: 'success' };
 
@@ -11,6 +12,7 @@ const slideIn = {
 };
 
 export default function VenueEmailCTA({ venueName }) {
+    const { t } = useLanguage();
     const [state, setState] = useState(STATES.IDLE);
     const [email, setEmail] = useState('');
     const [error, setError] = useState('');
@@ -26,13 +28,12 @@ export default function VenueEmailCTA({ venueName }) {
     const handleSubmit = (e) => {
         e?.preventDefault();
         if (!isValidEmail(email)) {
-            setError('Ievadi derīgu e-pastu');
+            setError(t.emailValidationError);
             inputRef.current?.focus();
             return;
         }
         setError('');
         setState(STATES.SUCCESS);
-        // Reset after 5 seconds
         setTimeout(() => {
             setState(STATES.IDLE);
             setEmail('');
@@ -52,7 +53,6 @@ export default function VenueEmailCTA({ venueName }) {
             <div className="relative h-[3.5rem] flex items-center">
                 <AnimatePresence mode="wait">
 
-                    {/* ── State 1: IDLE ── */}
                     {state === STATES.IDLE && (
                         <motion.button
                             key="idle"
@@ -61,16 +61,15 @@ export default function VenueEmailCTA({ venueName }) {
                             exit={{ opacity: 0, transition: { duration: 0.15 } }}
                             onClick={handleActivate}
                             className="absolute inset-0 px-6 flex items-center gap-2 group/link hover:opacity-70 transition-opacity cursor-pointer w-full"
-                            aria-label={`Apskatīt piedāvājumu par ${venueName}`}
+                            aria-label={`${t.viewOfferAriaLabel} ${venueName}`}
                         >
                             <span className="uppercase font-heading font-medium text-xs tracking-widest">
-                                Apskatīt Piedāvājumu
+                                {t.viewOffer}
                             </span>
                             <ArrowRightIcon size={16} weight="light" className="transform group-hover/link:translate-x-1 group-active/link:translate-x-2 transition-transform" />
                         </motion.button>
                     )}
 
-                    {/* ── State 2: EMAIL INPUT ── */}
                     {state === STATES.INPUT && (
                         <motion.form
                             key="input"
@@ -80,41 +79,35 @@ export default function VenueEmailCTA({ venueName }) {
                             onSubmit={handleSubmit}
                             className="absolute inset-0 flex items-center w-full"
                         >
-                            {/* Email input slides in from left */}
-                            <motion.div
-                                {...slideIn}
-                                className="flex-1 h-full flex items-center"
-                            >
+                            <motion.div {...slideIn} className="flex-1 h-full flex items-center">
                                 <input
                                     ref={inputRef}
                                     type="email"
                                     value={email}
                                     onChange={(e) => { setEmail(e.target.value); setError(''); }}
                                     onKeyDown={handleKeyDown}
-                                    placeholder={error || "tavs@epasts.lv"}
+                                    placeholder={error || t.emailPlaceholder}
                                     className={`w-full h-full px-6 bg-transparent text-xs uppercase tracking-widest font-heading font-medium outline-none placeholder:opacity-40 ${error ? 'placeholder:text-red-500 placeholder:opacity-70' : ''}`}
-                                    aria-label="E-pasta adrese"
+                                    aria-label={t.emailAriaLabel}
                                     autoComplete="email"
                                 />
                             </motion.div>
 
-                            {/* Submit button slides to the right */}
                             <motion.button
                                 initial={{ x: 20, opacity: 0 }}
                                 animate={{ x: 0, opacity: 1, transition: { type: 'spring', stiffness: 300, damping: 28, delay: 0.1 } }}
                                 type="submit"
                                 className="h-full px-6 flex items-center gap-2 border-l border-grid hover:bg-[var(--color-brand-accent)] transition-colors cursor-pointer shrink-0"
-                                aria-label="Nosūtīt"
+                                aria-label={t.emailSubmitLabel}
                             >
                                 <span className="uppercase font-heading font-medium text-xs tracking-widest whitespace-nowrap">
-                                    Saņemt
+                                    {t.emailSubmitText}
                                 </span>
                                 <ArrowRightIcon size={14} weight="light" />
                             </motion.button>
                         </motion.form>
                     )}
 
-                    {/* ── State 3: SUCCESS ── */}
                     {state === STATES.SUCCESS && (
                         <motion.div
                             key="success"
@@ -123,7 +116,7 @@ export default function VenueEmailCTA({ venueName }) {
                         >
                             <CheckIcon size={16} weight="light" className="text-green-600 shrink-0" />
                             <span className="uppercase font-heading font-medium text-xs tracking-widest">
-                                Piedāvājums tika nosūtīts uz tavu e-pastu!
+                                {t.emailSuccess}
                             </span>
                         </motion.div>
                     )}

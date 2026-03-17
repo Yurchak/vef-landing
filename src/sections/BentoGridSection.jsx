@@ -1,25 +1,21 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import { GridMarker } from '../components/GridMarker';
+import { useLanguage } from '../i18n/LanguageContext';
 
-const EVENTS = [
-    { name: "Brīvdabas koncerti", image: "https://picsum.photos/seed/vef-concerts/800/800" },
-    { name: "Street food", image: "https://picsum.photos/seed/vef-streetfood/800/800" },
-    { name: "Modes skates", image: "https://picsum.photos/seed/vef-fashion/800/800" },
-    { name: "Tiešraides", image: "https://picsum.photos/seed/vef-streams/800/800" },
-    { name: "Biznesa forumi", image: "https://picsum.photos/seed/vef-business/800/800" },
-    { name: "Kino vakari", image: "https://picsum.photos/seed/vef-cinema/800/800" },
-    { name: "Auto prezentācijas", image: "https://picsum.photos/seed/vef-automotive/800/800" },
-    { name: "Sports", image: "https://picsum.photos/seed/vef-sports/800/800" }
+const EVENT_IMAGES = [
+    "https://picsum.photos/seed/vef-concerts/800/800",
+    "https://picsum.photos/seed/vef-streetfood/800/800",
+    "https://picsum.photos/seed/vef-fashion/800/800",
+    "https://picsum.photos/seed/vef-streams/800/800",
+    "https://picsum.photos/seed/vef-business/800/800",
+    "https://picsum.photos/seed/vef-cinema/800/800",
+    "https://picsum.photos/seed/vef-automotive/800/800",
+    "https://picsum.photos/seed/vef-sports/800/800",
 ];
 
 const containerVariants = {
     hidden: {},
-    visible: {
-        transition: {
-            staggerChildren: 0.08,
-        },
-    },
+    visible: { transition: { staggerChildren: 0.08 } },
 };
 
 const cardVariants = {
@@ -27,27 +23,29 @@ const cardVariants = {
     visible: { opacity: 1, transition: { duration: 0.4 } },
 };
 
-function EventCard({ event }) {
+function EventCard({ name, image }) {
     return (
         <motion.div
             variants={cardVariants}
             className="aspect-square bg-[var(--color-brand-bg)] group relative flex items-end overflow-hidden transition-all duration-500"
         >
             <img
-                src={event.image}
-                alt={event.name}
+                src={image}
+                alt={name}
                 loading="lazy"
                 className="absolute inset-0 w-full h-full object-cover group-hover:grayscale-0 transition-all duration-700"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-500" />
             <h4 className="relative z-10 font-heading leading-tight uppercase transition-colors duration-500 text-white group-hover:text-[var(--color-brand-accent)] text-sm lg:text-base p-4 lg:p-6">
-                {event.name}
+                {name}
             </h4>
         </motion.div>
     );
 }
 
 export default function BentoGridSection() {
+    const { t } = useLanguage();
+
     return (
         <section id="bento-grid" className="w-full border-b border-grid flex flex-col overflow-hidden">
             <motion.div
@@ -64,14 +62,14 @@ export default function BentoGridSection() {
                         initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}
                         className="leading-[0.9] uppercase tracking-tight flex flex-col relative z-20"
                     >
-                        <span>Telpa tavai</span>
-                        <span>iztēlei.</span>
+                        <span>{t.bentoHeadingLine1}</span>
+                        <span>{t.bentoHeadingLine2}</span>
                     </motion.h2>
                 </div>
 
-                {/* Event Cards with stagger */}
-                {EVENTS.map((event) => (
-                    <EventCard key={event.name} event={event} />
+                {/* Event Cards */}
+                {t.events.map((name, i) => (
+                    <EventCard key={i} name={name} image={EVENT_IMAGES[i]} />
                 ))}
 
             </motion.div>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { GridMarker } from '../components/GridMarker';
+import { useLanguage } from '../i18n/LanguageContext';
 
 import BiteLogo from '../assets/Bite.svg';
 import BonavaLogo from '../assets/Bonava.svg';
@@ -23,7 +24,9 @@ const PARTNERS = [
 ];
 
 export default function SocialProofSection() {
+    const { t } = useLanguage();
     const carouselItems = [...PARTNERS, ...PARTNERS];
+    const headingLines = t.socialProofHeading.split('\n');
 
     return (
         <section id="social-proof" className="w-full border-b border-grid bg-[var(--color-brand-bg)] overflow-hidden">
@@ -37,7 +40,9 @@ export default function SocialProofSection() {
                         initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
                         className="text-2xl md:text-3xl lg:text-4xl tracking-tight uppercase font-heading leading-none"
                     >
-                        150+ neaizmirstami<br />pasākumi
+                        {headingLines.map((line, i) => (
+                            <React.Fragment key={i}>{line}{i < headingLines.length - 1 && <br />}</React.Fragment>
+                        ))}
                     </motion.h2>
                 </div>
 

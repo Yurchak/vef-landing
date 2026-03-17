@@ -2,9 +2,13 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowDownIcon } from '@phosphor-icons/react';
 import { GridMarker } from '../components/GridMarker';
+import { useLanguage } from '../i18n/LanguageContext';
 import vefPromenadeHero from '../assets/vef-promenade_hero.webp';
 
 export default function HeroSection() {
+    const { t } = useLanguage();
+    const headingLines = t.heroHeading.split('\n');
+
     return (
         <section className="w-full border-b border-grid overflow-hidden bg-[var(--color-brand-bg)]">
             <div className="w-full grid grid-cols-1 lg:grid-cols-2 min-h-[calc(100svh-5rem)]">
@@ -35,9 +39,9 @@ export default function HeroSection() {
                             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
                             className="text-[clamp(3.5rem,7vw,7rem)] tracking-tight uppercase leading-[0.9]"
                         >
-                            Pilna Servisa<br />
-                            Pasākumu<br />
-                            Kvartāls.
+                            {headingLines.map((line, i) => (
+                                <React.Fragment key={i}>{line}{i < headingLines.length - 1 && <br />}</React.Fragment>
+                            ))}
                         </motion.h1>
                     </div>
 
@@ -49,7 +53,7 @@ export default function HeroSection() {
                             transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
                             className="text-sm md:text-base max-w-sm leading-relaxed opacity-80"
                         >
-                            No sapulcēm līdz 1500 viesu festivāliem. Kur viss nepieciešamais veiksmīgam pasākumam pieejams vienuviet.
+                            {t.heroSubheading}
                         </motion.p>
                     </div>
 
@@ -64,7 +68,7 @@ export default function HeroSection() {
                             <GridMarker className="top-[0px] left-[0px] hidden sm:block z-10" />
                             <span className="font-heading font-medium text-lg md:text-xl lg:text-2xl uppercase transition-transform duration-400 flex flex-col items-center group-hover:translate-y-3 relative text-center">
                                 <ArrowDownIcon size={24} weight="light" className="absolute bottom-full mb-2 opacity-0 -translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-400" />
-                                Apskatīt Telpas
+                                {t.heroCtaButton}
                             </span>
                         </div>
                     </div>
@@ -74,7 +78,7 @@ export default function HeroSection() {
                 <div className="relative w-full h-[50vh] lg:h-full border-t lg:border-t-0 border-grid overflow-hidden">
                     <img
                         src={vefPromenadeHero}
-                        alt="VEF Promenāde Hero"
+                        alt={t.heroImageAlt}
                         className="w-full h-full object-cover"
                     />
                 </div>

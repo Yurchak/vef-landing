@@ -1,8 +1,11 @@
 import React from 'react';
 import { ArrowRightIcon } from '@phosphor-icons/react';
 import { GridMarker } from '../components/GridMarker';
+import { useLanguage } from '../i18n/LanguageContext';
 
 export default function Header() {
+    const { lang, toggle, t } = useLanguage();
+
     return (
         <header className="relative top-0 left-0 right-0 z-40 bg-[var(--color-brand-bg)] border-b border-grid">
             <div className="w-full h-20 flex items-stretch justify-between">
@@ -24,14 +27,25 @@ export default function Header() {
                     </svg>
                 </div>
 
-                {/* Nav / CTA */}
+                {/* Nav / Language + CTA */}
                 <div className="flex items-stretch relative">
                     <GridMarker className="bottom-[-1px] left-[-1px]" />
+
+                    {/* Language Toggle */}
+                    <button
+                        onClick={toggle}
+                        className="flex items-center justify-center px-6 border-l border-grid hover:bg-[var(--color-brand-accent)] transition-colors duration-400 font-data text-xs font-medium uppercase tracking-widest cursor-pointer"
+                        aria-label={lang === 'lv' ? 'Switch to English' : 'Pārslēgt uz latviešu'}
+                    >
+                        {lang === 'lv' ? 'EN' : 'LV'}
+                    </button>
+
+                    {/* CTA */}
                     <button
                         onClick={() => document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' })}
                         className="flex items-center justify-center gap-2 px-8 lg:px-12 border-l border-grid hover:bg-[var(--color-brand-accent)] transition-colors duration-400 font-heading text-xs font-medium uppercase tracking-widest group cursor-pointer"
                     >
-                        Rezervēt
+                        {t.book}
                         <ArrowRightIcon size={16} weight="light" className="transform group-hover:translate-x-1 group-active:translate-x-2 transition-transform" />
                     </button>
                 </div>

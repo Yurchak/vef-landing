@@ -12,7 +12,17 @@
   --color-brand-cta-hover: #eb4e1a;
   --color-brand-accent: #f76b34;
   --color-brand-border: #868e98;
-  --stroke-width: 0.5px;
+  --stroke-width: 1px;
+}
+
+/* On high-DPI screens (≥2x), use the thinnest possible hairline: 1 physical pixel.
+   0.5 CSS px × 2 device pixels = 1 crisp physical pixel.
+   This avoids the flicker/disappearing borders on 1x displays where 0.5px
+   rounds unpredictably to 0 or 1 depending on subpixel position. */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 2dppx) {
+  :root {
+    --stroke-width: 0.5px;
+  }
 }
 
 @layer base {
@@ -95,7 +105,7 @@
     border-color: var(--color-brand-border);
   }
 
-  /* Enforce --stroke-width (0.556px) on all directional combinations.
+  /* Enforce --stroke-width on all directional combinations.
      Compound selectors (2 classes) beat Tailwind's single-class utilities. */
   .border-grid.border {
     border-width: var(--stroke-width);
