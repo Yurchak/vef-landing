@@ -60,7 +60,7 @@ export default function VenueEmailCTA({ venueName }) {
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0, transition: { duration: 0.15 } }}
                             onClick={handleActivate}
-                            className="absolute inset-0 px-6 flex items-center gap-2 group/link hover:opacity-70 transition-opacity cursor-pointer w-full"
+                            className="absolute inset-0 px-6 flex items-center gap-2 group/link hover:text-[var(--color-brand-accent)] transition-colors cursor-pointer w-full"
                             aria-label={`${t.viewOfferAriaLabel} ${venueName}`}
                         >
                             <span className="uppercase font-heading font-medium text-xs tracking-widest">

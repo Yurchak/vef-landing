@@ -114,18 +114,18 @@ export const translations = {
         errorPhoneInvalid: "Ievadi derīgu tālruņa numuru",
 
         // Footer
-        footerAddress: "Adrese",
+        footerAddress: "Kontakti",
         footerNav: "Navigācija",
-        footerLegal: "Juridiskā info",
+        footerLegal: "Noteikumi",
         footerFollow: "Seko mums",
         footerVenues: "Pasākumu telpas",
-        footerServices: "Servisi",
+        footerServices: "Pakalpojumi",
         footerEvents: "Pasākumu veidi",
         footerContact: "Kontakti",
         footerPrivacy: "Privātuma politika",
         footerTerms: "Lietošanas noteikumi",
         footerCopyright: "2026 VEF Kvartāls",
-        footerMadeBy: "Made mostly by machines",
+        footerMadeBy: "Made by Kiwie Studio",
     },
 
     en: {
@@ -136,7 +136,7 @@ export const translations = {
         book: "Book",
 
         // Hero
-        heroHeading: "Full Service\nEvent\nQuarter.",
+        heroHeading: "Full Service\nEvent\nDistrict.",
         heroSubheading: "From meetings to 1,500-guest festivals. Everything you need for a successful event — all in one place.",
         heroCtaButton: "View Venues",
         heroImageAlt: "VEF Promenāde",
@@ -243,9 +243,9 @@ export const translations = {
         errorPhoneInvalid: "Enter a valid phone number",
 
         // Footer
-        footerAddress: "Address",
+        footerAddress: "Contact",
         footerNav: "Navigation",
-        footerLegal: "Legal",
+        footerLegal: "Terms",
         footerFollow: "Follow us",
         footerVenues: "Event venues",
         footerServices: "Services",
@@ -254,6 +254,6 @@ export const translations = {
         footerPrivacy: "Privacy policy",
         footerTerms: "Terms of use",
         footerCopyright: "2026 VEF Kvartāls",
-        footerMadeBy: "Made mostly by machines",
+        footerMadeBy: "Made by Kiwie Studio",
     },
 };

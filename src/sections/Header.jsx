@@ -27,20 +27,21 @@ export default function Header() {
                     </svg>
                 </div>
 
-                {/* Nav / Language + CTA */}
+                {/* Language Toggle */}
+                <button
+                    onClick={toggle}
+                    className="hidden md:flex items-center justify-center px-6 border-r border-grid hover:bg-[var(--color-brand-accent)] transition-colors duration-400 font-data text-xs font-medium uppercase tracking-widest cursor-pointer"
+                    aria-label={lang === 'lv' ? 'Switch to English' : 'Pārslēgt uz latviešu'}
+                >
+                    {lang === 'lv' ? 'EN' : 'LV'}
+                </button>
+
+                {/* Spacer */}
+                <div className="flex-1" />
+
+                {/* CTA */}
                 <div className="flex items-stretch relative">
                     <GridMarker className="bottom-[-1px] left-[-1px]" />
-
-                    {/* Language Toggle */}
-                    <button
-                        onClick={toggle}
-                        className="flex items-center justify-center px-6 border-l border-grid hover:bg-[var(--color-brand-accent)] transition-colors duration-400 font-data text-xs font-medium uppercase tracking-widest cursor-pointer"
-                        aria-label={lang === 'lv' ? 'Switch to English' : 'Pārslēgt uz latviešu'}
-                    >
-                        {lang === 'lv' ? 'EN' : 'LV'}
-                    </button>
-
-                    {/* CTA */}
                     <button
                         onClick={() => document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' })}
                         className="flex items-center justify-center gap-2 px-8 lg:px-12 border-l border-grid hover:bg-[var(--color-brand-accent)] transition-colors duration-400 font-heading text-xs font-medium uppercase tracking-widest group cursor-pointer"

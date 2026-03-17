@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import { ArrowsOutIcon, UserIcon, ChairIcon, ForkKnifeIcon, CaretLeftIcon, CaretRightIcon } from '@phosphor-icons/react';
 import { GridMarker } from '../components/GridMarker';
@@ -45,7 +45,7 @@ function VenueCard({ venue, venueText, statLabels }) {
                             <button
                                 key={i}
                                 onClick={() => setActiveImageIndex(i)}
-                                className={`w-12 h-12 md:w-16 md:h-16 overflow-hidden border transition-all duration-300 cursor-pointer ${activeImageIndex === i ? 'border-white/50 scale-110 shadow-lg' : 'border-transparent opacity-60 hover:opacity-100 hover:scale-105'}`}
+                                className={`w-12 h-12 md:w-16 md:h-16 overflow-hidden border border-white/30 transition-all duration-300 cursor-pointer ${activeImageIndex === i ? 'border-white/60 scale-110 shadow-lg' : 'hover:border-white/50 hover:scale-105'}`}
                                 aria-label={`View image ${i + 1}`}
                             >
                                 <img src={img} alt={`${venueText.title} thumbnail ${i + 1}`} loading="lazy" className="w-full h-full object-cover" />
@@ -106,6 +106,7 @@ export default function VenuesSection() {
     const controls = useAnimation();
     const currentIndexRef = useRef(VENUE_DATA.length);
     const [isAnimating, setIsAnimating] = useState(false);
+    const [activeVenue, setActiveVenue] = useState(1);
 
     const extendedVenues = [...VENUE_DATA, ...VENUE_DATA, ...VENUE_DATA];
 
@@ -144,6 +145,8 @@ export default function VenuesSection() {
             controls.set({ x: `${xPercent}%` });
         }
         setIsAnimating(false);
+        const centerOffset = itemsVisible === 1 ? 0 : Math.floor(itemsVisible / 2);
+        setActiveVenue((currentIndexRef.current + centerOffset) % VENUE_DATA.length);
     };
 
     const handlePrev = () => { if (!isAnimating) slideTo(currentIndexRef.current - 1); };
@@ -177,13 +180,23 @@ export default function VenuesSection() {
             </div>
 
             {/* Navigation Arrows Row */}
-            <div className="w-full h-16 flex items-center justify-end border-t border-b border-grid">
-                <button onClick={handlePrev} className="w-16 h-16 flex items-center justify-center border-l border-grid hover:bg-[var(--color-brand-accent)] transition-colors group cursor-pointer" aria-label={t.venuesPrevLabel}>
+            <div className="w-full h-16 flex items-center justify-between border-t border-b border-grid">
+                <div className="flex items-center gap-2 px-8 md:px-12 lg:px-10">
+                    {VENUE_DATA.map((_, i) => (
+                        <div
+                            key={i}
+                            className={`w-2 h-2 transition-colors duration-300 ${activeVenue === i ? 'bg-[var(--color-brand-text)]' : 'bg-[var(--color-brand-border)]'}`}
+                        />
+                    ))}
+                </div>
+                <div className="flex items-center h-full">
+                <button onClick={handlePrev} className="w-16 h-full flex items-center justify-center border-l border-grid hover:bg-[var(--color-brand-accent)] transition-colors group cursor-pointer" aria-label={t.venuesPrevLabel}>
                     <CaretLeftIcon size={24} weight="light" className="group-hover:-translate-x-0.5 group-active:-translate-x-1.5 transition-transform" />
                 </button>
-                <button onClick={handleNext} className="w-16 h-16 flex items-center justify-center border-l border-grid hover:bg-[var(--color-brand-accent)] transition-colors group cursor-pointer" aria-label={t.venuesNextLabel}>
+                <button onClick={handleNext} className="w-16 h-full flex items-center justify-center border-l border-grid hover:bg-[var(--color-brand-accent)] transition-colors group cursor-pointer" aria-label={t.venuesNextLabel}>
                     <CaretRightIcon size={24} weight="light" className="group-hover:translate-x-0.5 group-active:translate-x-1.5 transition-transform" />
                 </button>
+                </div>
             </div>
 
             {/* Venues Carousel Track */}

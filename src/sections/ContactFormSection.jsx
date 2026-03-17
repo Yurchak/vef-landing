@@ -71,7 +71,7 @@ export default function ContactFormSection() {
                         </motion.h2>
                     </div>
 
-                    <div className="relative p-8 md:p-12 lg:p-20 bg-[var(--color-brand-bg)] flex flex-col justify-center min-h-[16rem] border-b lg:border-b-0 border-grid">
+                    <div className="relative py-16 px-8 md:p-12 lg:p-20 bg-[var(--color-brand-bg)] flex flex-col justify-center border-b lg:border-b-0 border-grid">
                         <GridMarker className="top-0 right-[-1px] hidden lg:block" />
                         <motion.div
                             initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1, duration: 0.6 }}
