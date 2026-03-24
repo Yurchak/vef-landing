@@ -73,7 +73,8 @@ export default async function handler(req, res) {
         if (SHEET_WEBHOOK) {
             fetch(SHEET_WEBHOOK, {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
+                redirect: 'follow',
+                headers: { 'Content-Type': 'text/plain' },
                 body: JSON.stringify({ email, venueName, lang }),
             }).catch(() => {});
         }
