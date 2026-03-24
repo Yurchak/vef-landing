@@ -7,12 +7,15 @@ import { useLanguage } from '../i18n/LanguageContext';
 const VENUE_NAMES = ["VEF Mansards", "VEF Spīdola", "VEF Vasarnīca", "VEF Promenāde"];
 
 export default function ContactFormSection() {
-    const { t } = useLanguage();
+    const { t, lang } = useLanguage();
     const [submitted, setSubmitted] = useState(false);
+    const [submitting, setSubmitting] = useState(false);
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
     const [dateValue, setDateValue] = useState('');
     const [guestsValue, setGuestsValue] = useState('');
+    const [selectedVenues, setSelectedVenues] = useState([]);
+    const [message, setMessage] = useState('');
     const [errors, setErrors] = useState({});
     const [touched, setTouched] = useState({});
 
@@ -35,13 +38,34 @@ export default function ContactFormSection() {
         }
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         const fieldErrors = validateForm({ email, phone });
         setErrors(fieldErrors);
         setTouched({ email: true, phone: true });
-        if (Object.keys(fieldErrors).length === 0) {
+        if (Object.keys(fieldErrors).length > 0) return;
+
+        setSubmitting(true);
+        try {
+            const res = await fetch('/api/contact', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    email,
+                    phone,
+                    date: dateValue,
+                    guests: guestsValue,
+                    venues: selectedVenues,
+                    message,
+                    lang,
+                }),
+            });
+            if (!res.ok) throw new Error('Send failed');
             setSubmitted(true);
+        } catch {
+            setErrors({ email: lang === 'en' ? 'Something went wrong. Please try again.' : 'Kaut kas nogāja greizi. Mēģiniet vēlreiz.' });
+        } finally {
+            setSubmitting(false);
         }
     };
 
@@ -95,7 +119,7 @@ export default function ContactFormSection() {
                             <CheckCircleIcon size={64} weight="light" className="mb-8" />
                             <h3 className="text-3xl font-heading uppercase mb-4 tracking-tight">{t.contactThankYou}</h3>
                             <p className="opacity-80 leading-relaxed max-w-sm mx-auto">{t.contactThankYouMessage}</p>
-                            <button className="mt-8 uppercase font-medium tracking-widest text-xs underline font-heading underline-offset-8 hover:text-[var(--color-brand-cta)] transition-colors cursor-pointer" onClick={() => { setSubmitted(false); setEmail(''); setPhone(''); setErrors({}); setTouched({}); }}>{t.contactSendAgain}</button>
+                            <button className="mt-8 uppercase font-medium tracking-widest text-xs underline font-heading underline-offset-8 hover:text-[var(--color-brand-cta)] transition-colors cursor-pointer" onClick={() => { setSubmitted(false); setEmail(''); setPhone(''); setDateValue(''); setGuestsValue(''); setSelectedVenues([]); setMessage(''); setErrors({}); setTouched({}); }}>{t.contactSendAgain}</button>
                         </motion.div>
                     ) : (
                         <motion.form
@@ -163,7 +187,7 @@ export default function ContactFormSection() {
                                 <div className="grid grid-cols-3 lg:grid-cols-5 gap-2">
                                     {[...VENUE_NAMES, t.venueOptionUndecided].map(venue => (
                                         <label key={venue} className="flex flex-col items-center justify-center gap-3 cursor-pointer group p-2 hover:bg-black/5 transition-colors text-center">
-                                            <input type="checkbox" value={venue} className="sr-only peer" />
+                                            <input type="checkbox" value={venue} className="sr-only peer" checked={selectedVenues.includes(venue)} onChange={(e) => { setSelectedVenues(prev => e.target.checked ? [...prev, venue] : prev.filter(v => v !== venue)); }} />
                                             <div className="w-4 h-4 rounded-sm flex flex-shrink-0 items-center justify-center transition-all bg-[var(--color-brand-border)] peer-checked:bg-[var(--color-brand-accent)] opacity-60 peer-checked:opacity-100">
                                             </div>
                                             <span className="text-[9px] uppercase tracking-widest font-bold opacity-80 leading-tight font-data">{venue}</span>
@@ -174,13 +198,13 @@ export default function ContactFormSection() {
 
                             <div className="bg-[var(--color-brand-bg)] p-6 lg:p-8 flex flex-col flex-grow">
                                 <label htmlFor="message" className="text-[10px] uppercase tracking-widest font-bold opacity-60 mb-3 font-data">{t.labelMessage}</label>
-                                <textarea id="message" rows={4} placeholder={t.placeholderMessage} className="w-full h-full bg-transparent outline-none py-2 transition-colors rounded-none resize-none placeholder:text-inherit placeholder:opacity-40 min-h-[100px]"></textarea>
+                                <textarea id="message" rows={4} value={message} onChange={(e) => setMessage(e.target.value)} placeholder={t.placeholderMessage} className="w-full h-full bg-transparent outline-none py-2 transition-colors rounded-none resize-none placeholder:text-inherit placeholder:opacity-40 min-h-[100px]"></textarea>
                             </div>
 
                             <div className="bg-[var(--color-brand-bg)] flex justify-end">
-                                <button type="submit" className="flex items-center justify-center gap-2 w-full py-8 px-12 bg-[var(--color-brand-accent)] hover:bg-[var(--color-brand-cta-hover)] uppercase font-heading font-medium tracking-widest text-[1rem] leading-none transition-colors duration-400 cursor-pointer group">
-                                    <span>{t.submitButton}</span>
-                                    <ArrowRightIcon size={20} weight="light" className="mb-[2px] transform group-hover:translate-x-1 group-active:translate-x-2 transition-transform" />
+                                <button type="submit" disabled={submitting} className="flex items-center justify-center gap-2 w-full py-8 px-12 bg-[var(--color-brand-accent)] hover:bg-[var(--color-brand-cta-hover)] uppercase font-heading font-medium tracking-widest text-[1rem] leading-none transition-colors duration-400 cursor-pointer group disabled:opacity-60 disabled:cursor-wait">
+                                    <span>{submitting ? (lang === 'en' ? 'Sending...' : 'Sūta...') : t.submitButton}</span>
+                                    {!submitting && <ArrowRightIcon size={20} weight="light" className="mb-[2px] transform group-hover:translate-x-1 group-active:translate-x-2 transition-transform" />}
                                 </button>
                             </div>
                         </motion.form>

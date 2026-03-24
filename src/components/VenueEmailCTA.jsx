@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRightIcon, CheckIcon } from '@phosphor-icons/react';
 import { useLanguage } from '../i18n/LanguageContext';
@@ -12,10 +12,11 @@ const slideIn = {
 };
 
 export default function VenueEmailCTA({ venueName }) {
-    const { t } = useLanguage();
+    const { t, lang } = useLanguage();
     const [state, setState] = useState(STATES.IDLE);
     const [email, setEmail] = useState('');
     const [error, setError] = useState('');
+    const [submitting, setSubmitting] = useState(false);
     const inputRef = useRef(null);
 
     const isValidEmail = (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
@@ -25,7 +26,7 @@ export default function VenueEmailCTA({ venueName }) {
         setTimeout(() => inputRef.current?.focus(), 100);
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e?.preventDefault();
         if (!isValidEmail(email)) {
             setError(t.emailValidationError);
@@ -33,11 +34,24 @@ export default function VenueEmailCTA({ venueName }) {
             return;
         }
         setError('');
-        setState(STATES.SUCCESS);
-        setTimeout(() => {
-            setState(STATES.IDLE);
-            setEmail('');
-        }, 5000);
+        setSubmitting(true);
+        try {
+            const res = await fetch('/api/lead-magnet', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, venueName, lang }),
+            });
+            if (!res.ok) throw new Error('Send failed');
+            setState(STATES.SUCCESS);
+            setTimeout(() => {
+                setState(STATES.IDLE);
+                setEmail('');
+            }, 5000);
+        } catch {
+            setError(lang === 'en' ? 'Something went wrong' : 'Kaut kas nogāja greizi');
+        } finally {
+            setSubmitting(false);
+        }
     };
 
     const handleKeyDown = (e) => {
