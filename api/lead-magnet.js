@@ -3,6 +3,7 @@ import { Resend } from 'resend';
 const resend = new Resend(process.env.RESEND_API_KEY);
 const FROM_EMAIL = process.env.FROM_EMAIL || 'VEF Kvartāls <events@vefkvartals.lv>';
 const TO_EMAIL = process.env.CONTACT_EMAIL || 'events@vefkvartals.lv';
+const SHEET_WEBHOOK = process.env.GOOGLE_SHEET_WEBHOOK;
 
 // Map venue IDs to Google Drive file IDs
 // Client uploads PDFs to Drive, shares with "Anyone with link",
@@ -68,21 +69,14 @@ export default async function handler(req, res) {
             `,
         });
 
-        // Notify the team about new lead
-        await resend.emails.send({
-            from: FROM_EMAIL,
-            to: TO_EMAIL,
-            replyTo: email,
-            subject: `Jauns lead magnet: ${venueName}`,
-            html: `
-                <div style="font-family: sans-serif;">
-                    <h3>Jauns piedāvājuma pieprasījums</h3>
-                    <p><strong>E-pasts:</strong> ${email}</p>
-                    <p><strong>Telpa:</strong> ${venueName}</p>
-                    <p><strong>Valoda:</strong> ${lang === 'en' ? 'EN' : 'LV'}</p>
-                </div>
-            `,
-        });
+        // Log lead to Google Sheet (fire and forget)
+        if (SHEET_WEBHOOK) {
+            fetch(SHEET_WEBHOOK, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, venueName, lang }),
+            }).catch(() => {});
+        }
 
         return res.status(200).json({ success: true });
     } catch (error) {
