@@ -54,7 +54,7 @@ export default async function handler(req, res) {
                             ? 'Thank you for your interest! Click the link below to download the detailed venue information.'
                             : 'Paldies par interesi! Noklikšķiniet uz zemāk esošās saites, lai lejupielādētu detalizētu informāciju par telpu.'}
                     </p>
-                    <a href="${downloadUrl}" style="display: inline-block; margin: 24px 0; padding: 14px 28px; background: #C8A55C; color: #fff; text-decoration: none; font-weight: bold; letter-spacing: 1px; text-transform: uppercase; font-size: 13px;">
+                    <a href="${downloadUrl}" style="display: inline-block; margin: 24px 0; padding: 14px 28px; background: #f76b34; color: #fff; border-radius: 2px; text-decoration: none; font-weight: bold; letter-spacing: 1px; text-transform: uppercase; font-size: 13px;">
                         ${isEn ? 'Download PDF' : 'Lejupielādēt PDF'}
                     </a>
                     <p style="font-size: 14px; color: #666; margin-top: 24px;">
@@ -63,7 +63,7 @@ export default async function handler(req, res) {
                             : 'Ir jautājumi? Atbildiet uz šo e-pastu un mūsu komanda ar Jums sazināsies.'}
                     </p>
                     <hr style="margin: 32px 0; border: none; border-top: 1px solid #eee;" />
-                    <p style="font-size: 12px; color: #999;">VEF Kvartāls · Ēvalda Valtera iela 2, Rīga</p>
+                    <p style="font-size: 12px; color: #999;">VEF Kvartāls · Bērzaunes iela 11A, Rīga, LV-1039</p>
                 </div>
             `,
         });
