@@ -70,12 +70,23 @@ export default async function handler(req, res) {
         });
 
         // Log lead to Google Sheet (fire and forget)
+        // Apps Script returns 302; fetch silently converts POST→GET losing body.
+        // Manual redirect preserves the POST method and payload.
         if (SHEET_WEBHOOK) {
+            const payload = JSON.stringify({ email, venueName, lang });
             fetch(SHEET_WEBHOOK, {
                 method: 'POST',
-                redirect: 'follow',
+                redirect: 'manual',
                 headers: { 'Content-Type': 'text/plain' },
-                body: JSON.stringify({ email, venueName, lang }),
+                body: payload,
+            }).then(r => {
+                if (r.status >= 300 && r.status < 400) {
+                    return fetch(r.headers.get('location'), {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'text/plain' },
+                        body: payload,
+                    });
+                }
             }).catch(() => {});
         }
 
