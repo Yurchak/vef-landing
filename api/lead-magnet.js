@@ -41,7 +41,7 @@ export default async function handler(req, res) {
         // Send PDF link to the visitor
         await resend.emails.send({
             from: FROM_EMAIL,
-            reply_to: TO_EMAIL,
+            replyTo: TO_EMAIL,
             to: email,
             subject: isEn
                 ? `${venueName} — Your venue offer`
@@ -72,7 +72,7 @@ export default async function handler(req, res) {
         await resend.emails.send({
             from: FROM_EMAIL,
             to: TO_EMAIL,
-            reply_to: email,
+            replyTo: email,
             subject: `Jauns lead magnet: ${venueName}`,
             html: `
                 <div style="font-family: sans-serif;">

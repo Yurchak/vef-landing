@@ -22,7 +22,7 @@ export default async function handler(req, res) {
         await resend.emails.send({
             from: FROM_EMAIL,
             to: TO_EMAIL,
-            reply_to: email,
+            replyTo: email,
             subject: `Jauns pieprasījums no VEF Kvartāls [${langLabel}]`,
             html: `
                 <div style="font-family: sans-serif; max-width: 600px;">
