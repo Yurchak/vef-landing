@@ -2,15 +2,24 @@ import { motion } from 'framer-motion';
 import { GridMarker } from '../components/GridMarker';
 import { useLanguage } from '../i18n/LanguageContext';
 
+import imgBrivdabasKoncerti from '../assets/vef-events/vef-brivdabas-koncerti.webp';
+import imgStreetFood from '../assets/vef-events/vef-street-food.webp';
+import imgModesSkates from '../assets/vef-events/vef-modes-skates.webp';
+import imgTiesraides from '../assets/vef-events/vef-tiesraides.webp';
+import imgBiznesaForumi from '../assets/vef-events/vef-biznesa-forumi.webp';
+import imgKinoVakari from '../assets/vef-events/vef-kino-vakari.webp';
+import imgAutoPrezentacijas from '../assets/vef-events/vef-auto-prezentacijas.webp';
+import imgCeremonijas from '../assets/vef-events/vef-ceremonijas.webp';
+
 const EVENT_IMAGES = [
-    "https://picsum.photos/seed/vef-concerts/800/800",
-    "https://picsum.photos/seed/vef-streetfood/800/800",
-    "https://picsum.photos/seed/vef-fashion/800/800",
-    "https://picsum.photos/seed/vef-streams/800/800",
-    "https://picsum.photos/seed/vef-business/800/800",
-    "https://picsum.photos/seed/vef-cinema/800/800",
-    "https://picsum.photos/seed/vef-automotive/800/800",
-    "https://picsum.photos/seed/vef-sports/800/800",
+    imgBrivdabasKoncerti,
+    imgStreetFood,
+    imgModesSkates,
+    imgTiesraides,
+    imgBiznesaForumi,
+    imgKinoVakari,
+    imgAutoPrezentacijas,
+    imgCeremonijas,
 ];
 
 const containerVariants = {

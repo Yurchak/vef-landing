@@ -84,7 +84,7 @@ export const translations = {
         bentoHeadingLine2: "iztēlei.",
         events: [
             "Brīvdabas koncerti", "Street food", "Modes skates", "Tiešraides",
-            "Biznesa forumi", "Kino vakari", "Auto prezentācijas", "Sports",
+            "Biznesa forumi", "Kino vakari", "Auto prezentācijas", "Ceremonijas",
         ],
 
         // Contact Form
@@ -213,7 +213,7 @@ export const translations = {
         bentoHeadingLine2: "your imagination.",
         events: [
             "Outdoor concerts", "Street food", "Fashion shows", "Livestreams",
-            "Business forums", "Movie nights", "Car launches", "Sports",
+            "Business forums", "Movie nights", "Car launches", "Ceremonies",
         ],
 
         // Contact Form
