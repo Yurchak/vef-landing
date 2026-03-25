@@ -21,9 +21,9 @@ import promenade3 from '../assets/vef-venues/promenade-3.webp';
 
 const VENUE_DATA = [
     { id: "mansards", area: "286m²", guests: "100", standing: "120", seated: "120", images: [mansards1, mansards2, mansards3] },
-    { id: "spidola", area: "314m²", guests: "120", standing: "250", seated: "240", images: [spidola1, spidola2, spidola3] },
-    { id: "vasarnica", area: "926m²", guests: "450", standing: "1400", seated: "500", images: [vasarnica1, vasarnica2, vasarnica3] },
-    { id: "promenade", area: "3136m²", guests: "2000", standing: "4000", seated: "3000", images: [promenade1, promenade2, promenade3] },
+    { id: "spidola", area: "314m²", guests: "120", standing: "275", seated: "250", images: [spidola1, spidola2, spidola3] },
+    { id: "vasarnica", area: "926m²", guests: "300", standing: "1200", seated: "500", images: [vasarnica1, vasarnica2, vasarnica3] },
+    { id: "promenade", area: "3136m²", guests: "2000", standing: "3500", seated: "2000", images: [promenade1, promenade2, promenade3] },
 ];
 
 function VenueCard({ venue, venueText, statLabels }) {
