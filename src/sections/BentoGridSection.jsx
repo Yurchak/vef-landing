@@ -44,7 +44,7 @@ function EventCard({ name, image }) {
                 loading="lazy"
                 className="absolute inset-0 w-full h-full object-cover group-hover:grayscale-0 transition-all duration-700"
             />
-            <div className="absolute inset-0 bg-white/35 z-[1] group-hover:opacity-0 transition-opacity duration-500" />
+            <div className="absolute inset-0 bg-white/35 z-[1] group-hover:opacity-0 transition-opacity duration-500 hidden md:block" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-500" />
             <h4 className="relative z-10 font-heading leading-tight uppercase transition-colors duration-500 text-white group-hover:text-[var(--color-brand-accent)] text-sm lg:text-base p-4 lg:p-6">
                 {name}
