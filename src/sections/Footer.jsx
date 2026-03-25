@@ -74,7 +74,7 @@ export default function Footer() {
                     >
                         {lang === 'lv' ? 'EN' : 'LV'}
                     </button>
-                    <span className="opacity-40 font-data">{t.footerMadeBy}</span>
+                    <span className="opacity-40 font-data">Made by <a href="http://kiwie.studio/" target="_blank" rel="noopener noreferrer" className="hover:opacity-100 transition-opacity">Kiwie Studio</a></span>
                 </div>
             </div>
         </footer>

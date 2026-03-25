@@ -25,7 +25,7 @@ function ServiceItem({ service, Icon, index, isOpen, onToggle }) {
             </div>
             <div className={`grid ${isOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'} group-hover:grid-rows-[1fr] transition-[grid-template-rows] duration-300 ease-out pl-10`}>
                 <div className="overflow-hidden">
-                    <p className="text-xs opacity-50 leading-relaxed font-sans">
+                    <p className="text-[14px] opacity-50 leading-[1.4] font-sans">
                         {service.desc}
                     </p>
                 </div>

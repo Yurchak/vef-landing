@@ -202,7 +202,7 @@ export default function ContactFormSection() {
                             </div>
 
                             <div className="bg-[var(--color-brand-bg)] flex justify-end">
-                                <button type="submit" disabled={submitting} className="flex items-center justify-center gap-2 w-full py-8 px-12 bg-[var(--color-brand-accent)] hover:bg-[var(--color-brand-cta-hover)] uppercase font-heading font-medium tracking-widest text-[1rem] leading-none transition-colors duration-400 cursor-pointer group disabled:opacity-60 disabled:cursor-wait">
+                                <button type="submit" disabled={submitting} className="flex items-center justify-center gap-2 w-full py-8 px-12 bg-[var(--color-brand-accent)] hover:bg-[var(--color-brand-cta-hover)] uppercase font-heading font-medium tracking-widest text-xs leading-none transition-colors duration-400 cursor-pointer group disabled:opacity-60 disabled:cursor-wait">
                                     <span>{submitting ? (lang === 'en' ? 'Sending...' : 'Sūta...') : t.submitButton}</span>
                                     {!submitting && <ArrowRightIcon size={20} weight="light" className="mb-[2px] transform group-hover:translate-x-1 group-active:translate-x-2 transition-transform" />}
                                 </button>
