@@ -14,8 +14,8 @@ export default function Footer() {
                     <GridMarker className="bottom-[-1px] right-[-1px] hidden md:block" />
                     <h5 className="text-[10px] uppercase tracking-widest opacity-60 pb-0 md:pb-4 font-data after:block after:w-8 after:h-[var(--stroke-width)] after:bg-[var(--color-brand-border)] after:mt-6 md:after:mt-4">{t.footerAddress}</h5>
                     <div className="space-y-2 opacity-80 leading-relaxed text-sm pt-2">
-                        <p>VEF Kvartāls<br />Bērzaunes iela 11A<br />Rīga, LV-1039</p>
-                        <p className="mt-4 font-heading text-sm font-medium">+ 371 200 00 000</p>
+                        <p>VEF Kvartāls<br />Ūnijas iela 8K7<br />Rīga, LV-1039</p>
+                        <a href="tel:+37125666199" className="block mt-4 font-heading text-sm font-medium hover:text-[var(--color-brand-accent)] transition-colors">+371 256 66 199</a>
                     </div>
                 </div>
 
@@ -25,9 +25,11 @@ export default function Footer() {
                     <h5 className="text-[10px] uppercase tracking-widest opacity-60 pb-0 md:pb-4 font-data after:block after:w-8 after:h-[var(--stroke-width)] after:bg-[var(--color-brand-border)] after:mt-6 md:after:mt-4">{t.footerNav}</h5>
                     <nav className="flex flex-col space-y-4 opacity-80 pt-2">
                         <a href="#venues" className="hover:text-[var(--color-brand-accent)] transition-colors w-max uppercase tracking-widest text-[11px] font-medium">{t.footerVenues}</a>
-                        <a href="#ecosystem" className="hover:text-[var(--color-brand-accent)] transition-colors w-max uppercase tracking-widest text-[11px] font-medium">{t.footerServices}</a>
+                        <a href="https://vefkvartals.lv/premises/" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--color-brand-accent)] transition-colors w-max uppercase tracking-widest text-[11px] font-medium">{t.footerOffices}</a>
                         <a href="#bento-grid" className="hover:text-[var(--color-brand-accent)] transition-colors w-max uppercase tracking-widest text-[11px] font-medium">{t.footerEvents}</a>
                         <a href="#contact-form" className="hover:text-[var(--color-brand-accent)] transition-colors w-max uppercase tracking-widest text-[11px] font-medium">{t.footerContact}</a>
+                        <a href="https://vefkvartals.lv/events/" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--color-brand-accent)] transition-colors w-max uppercase tracking-widest text-[11px] font-medium">{t.footerCalendar}</a>
+                        <a href="https://vefkvartals.lv/jaunumi/" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--color-brand-accent)] transition-colors w-max uppercase tracking-widest text-[11px] font-medium">{t.footerNews}</a>
                     </nav>
                 </div>
 
@@ -36,8 +38,8 @@ export default function Footer() {
                     <div>
                         <h5 className="text-[10px] uppercase tracking-widest opacity-60 pb-0 md:pb-4 font-data after:block after:w-8 after:h-[var(--stroke-width)] after:bg-[var(--color-brand-border)] after:mt-6 md:after:mt-4">{t.footerLegal}</h5>
                         <nav className="flex flex-col space-y-4 opacity-80 pt-6">
-                            <span className="opacity-50 uppercase tracking-widest text-[11px] font-medium">{t.footerPrivacy}</span>
-                            <span className="opacity-50 uppercase tracking-widest text-[11px] font-medium">{t.footerTerms}</span>
+                            <a href="https://vefkvartals.lv/" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--color-brand-accent)] transition-colors uppercase tracking-widest text-[11px] font-medium">{t.footerPrivacy}</a>
+                            <a href="https://vefkvartals.lv/" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--color-brand-accent)] transition-colors uppercase tracking-widest text-[11px] font-medium">{t.footerTerms}</a>
                         </nav>
                     </div>
                 </div>
@@ -46,14 +48,14 @@ export default function Footer() {
                     <div>
                         <h5 className="text-[10px] uppercase tracking-widest opacity-60 pb-0 md:pb-4 font-data after:block after:w-8 after:h-[var(--stroke-width)] after:bg-[var(--color-brand-border)] after:mt-6 md:after:mt-4">{t.footerFollow}</h5>
                         <div className="flex space-x-4 opacity-80 pt-6">
-                            <a href="#" aria-label="Instagram" className="p-3 transition-colors group hover:bg-black/10">
+                            <a href="https://www.instagram.com/vefkvartals/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="p-3 transition-colors group hover:bg-black/10">
                                 <InstagramLogoIcon size={24} weight="light" />
                             </a>
-                            <a href="#" aria-label="LinkedIn" className="p-3 transition-colors group hover:bg-black/10">
-                                <LinkedinLogoIcon size={24} weight="light" />
-                            </a>
-                            <a href="#" aria-label="Facebook" className="p-3 transition-colors group hover:bg-black/10">
+                            <a href="https://www.facebook.com/vefkvartals" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="p-3 transition-colors group hover:bg-black/10">
                                 <FacebookLogoIcon size={24} weight="light" />
+                            </a>
+                            <a href="https://www.linkedin.com/company/vefkvartals/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="p-3 transition-colors group hover:bg-black/10">
+                                <LinkedinLogoIcon size={24} weight="light" />
                             </a>
                         </div>
                     </div>
