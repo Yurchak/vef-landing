@@ -40,7 +40,7 @@ export default async function handler(req, res) {
             `,
         });
 
-        fetch(CONTACT_WEBHOOK, {
+        await fetch(CONTACT_WEBHOOK, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ email, phone, date, guests, venues, message }),
