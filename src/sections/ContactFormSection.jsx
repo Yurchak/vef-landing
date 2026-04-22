@@ -168,7 +168,7 @@ export default function ContactFormSection() {
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-[var(--stroke-width)]">
                                 <div className="bg-[var(--color-brand-bg)] p-6 lg:p-8 flex flex-col justify-center">
                                     <label htmlFor="date" className="text-[10px] uppercase tracking-widest font-bold opacity-60 mb-3 font-data">{t.labelDate}</label>
-                                    <input id="date" type="date" value={dateValue} onChange={(e) => setDateValue(e.target.value)} className={`w-full bg-transparent outline-none py-2 transition-colors rounded-none uppercase ${dateValue ? 'opacity-100' : 'opacity-40'}`} />
+                                    <input id="date" type="date" value={dateValue} min={new Date().toISOString().split('T')[0]} onChange={(e) => setDateValue(e.target.value)} className={`w-full bg-transparent outline-none py-2 transition-colors rounded-none uppercase ${dateValue ? 'opacity-100' : 'opacity-40'}`} />
                                 </div>
                                 <div className="bg-[var(--color-brand-bg)] p-6 lg:p-8 flex flex-col justify-center">
                                     <label htmlFor="guests" className="text-[10px] uppercase tracking-widest font-bold opacity-60 mb-3 font-data">{t.labelGuests}</label>
