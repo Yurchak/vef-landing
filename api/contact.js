@@ -3,6 +3,7 @@ import { Resend } from 'resend';
 const resend = new Resend(process.env.RESEND_API_KEY);
 const TO_EMAIL = process.env.CONTACT_EMAIL || 'events@vefkvartals.lv';
 const FROM_EMAIL = process.env.FROM_EMAIL || 'VEF Kvartāls <events@vefkvartals.lv>';
+const CONTACT_WEBHOOK = 'https://hooks.tglk.ru/in/PYyJAoL7Kw3XAdtKoktWMZ7bmaZ8ev';
 
 export default async function handler(req, res) {
     if (req.method !== 'POST') {
@@ -38,6 +39,12 @@ export default async function handler(req, res) {
                 </div>
             `,
         });
+
+        fetch(CONTACT_WEBHOOK, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email, phone, date, guests, venues, message }),
+        }).catch(() => {});
 
         return res.status(200).json({ success: true });
     } catch (error) {
